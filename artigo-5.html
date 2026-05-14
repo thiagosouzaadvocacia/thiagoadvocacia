@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Divórcio em cartório: quando é possível, quanto custa e como funciona</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:    #c8a832;
+      --gold-lt: #d9bc55;
+      --dark:    #0d1f35;
+      --dark2:   #1a2f4a;
+      --cream:   #f4f4ff;
+      --cream2:  #e8e8f5;
+      --text:    #1a2f4a;
+      --muted:   #4a6080;
+      --white:   #ffffff;
+      --radius:  4px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Raleway', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
+
+    .section-label {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+    }
+    .divider { width: 48px; height: 2px; background: var(--gold); margin: 16px 0 24px; }
+
+    /* NAVBAR */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(26,22,16,0.96); backdrop-filter: blur(8px);
+      padding: 16px 40px; display: flex; align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(233,205,92,0.25);
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; color: var(--white); letter-spacing: 0.04em; text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    .nav-cta { background: var(--gold); color: var(--white) !important; padding: 8px 20px; border-radius: var(--radius); font-weight: 500 !important; }
+    .nav-cta:hover { background: var(--gold-lt) !important; }
+
+    /* FOOTER */
+    footer { background: var(--dark2); border-top: 1px solid rgba(233,205,92,0.2); padding: 24px 80px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    footer p { font-size: 12px; color: rgba(255,255,255,0.35); }
+    footer .footer-logo { font-family: 'Playfair Display', serif; font-size: 16px; color: rgba(255,255,255,0.5); }
+    footer .footer-logo span { color: var(--gold); }
+
+    /* WA FLOAT */
+    .wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 200; width: 56px; height: 56px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4); text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+    .wa-float:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
+    .wa-float svg { width: 30px; height: 30px; fill: white; }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.7s cubic-bezier(.22,.68,0,1.2), transform 0.7s cubic-bezier(.22,.68,0,1.2); }
+    .reveal.from-left  { transform: translateX(-44px); }
+    .reveal.from-right { transform: translateX(44px); }
+    .reveal.visible    { opacity: 1; transform: translate(0,0); }
+    .reveal[data-delay="1"] { transition-delay: 0.08s; }
+    .reveal[data-delay="2"] { transition-delay: 0.17s; }
+    .reveal[data-delay="3"] { transition-delay: 0.26s; }
+    .reveal[data-delay="4"] { transition-delay: 0.35s; }
+    .reveal[data-delay="5"] { transition-delay: 0.44s; }
+    .reveal[data-delay="6"] { transition-delay: 0.53s; }
+
+    @media (max-width: 900px) {
+      nav { padding: 14px 24px; }
+      .nav-links { display: none; }
+      footer { padding: 20px 24px; flex-direction: column; text-align: center; }
+    }
+
+    /* HERO DO ARTIGO */
+    .artigo-hero {
+      background: var(--dark); padding: 140px 80px 72px;
+      position: relative; overflow: hidden;
+    }
+    .artigo-hero::before {
+      content: ''; position: absolute; top: -60px; right: -80px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(200,168,50,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .artigo-hero::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .artigo-hero-inner { position: relative; z-index: 1; max-width: 800px; }
+    .artigo-hero-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; flex-wrap: wrap; }
+    .artigo-hero-cat {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--dark); background: var(--gold); padding: 5px 14px; border-radius: 20px;
+    }
+    .artigo-hero-data { font-size: 13px; color: rgba(255,255,255,0.45); }
+    .artigo-hero h1 { font-size: clamp(28px, 3.5vw, 46px); color: var(--white); line-height: 1.2; margin-bottom: 20px; }
+    .artigo-hero-sub { font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 660px; }
+
+    /* BREADCRUMB */
+    .breadcrumb { padding: 16px 80px; background: var(--cream2); border-bottom: 1px solid rgba(13,31,53,0.1); display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
+    .breadcrumb a { color: var(--gold); text-decoration: none; transition: opacity .2s; }
+    .breadcrumb a:hover { opacity: .75; }
+    .breadcrumb span { opacity: .5; }
+
+    /* LAYOUT ARTIGO */
+    .artigo-layout {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 320px;
+      gap: 60px; padding: 64px 80px 100px; align-items: start;
+    }
+
+    /* CORPO DO ARTIGO */
+    .artigo-corpo { max-width: 720px; }
+    .artigo-corpo h2 { font-size: 26px; color: var(--dark); margin: 40px 0 16px; }
+    .artigo-corpo h2:first-child { margin-top: 0; }
+    .artigo-corpo h3 { font-size: 19px; color: var(--dark2); margin: 28px 0 12px; }
+    .artigo-corpo p { font-size: 15px; line-height: 1.85; color: var(--muted); margin-bottom: 18px; }
+    .artigo-corpo strong { color: var(--text); }
+    .artigo-corpo ul, .artigo-corpo ol { padding-left: 24px; margin-bottom: 18px; }
+    .artigo-corpo li { font-size: 15px; line-height: 1.8; color: var(--muted); margin-bottom: 6px; }
+
+    .artigo-destaque {
+      border-left: 3px solid var(--gold); padding: 18px 24px;
+      background: rgba(200,168,50,0.06); border-radius: 0 4px 4px 0;
+      margin: 28px 0;
+    }
+    .artigo-destaque p { margin: 0; font-style: italic; color: var(--text); font-size: 15px; }
+    .destaque-fonte {
+      display: block; margin-top: 12px;
+      font-size: 11px; color: var(--muted); font-style: normal;
+      letter-spacing: 0.04em; opacity: 0.8;
+    }
+    .destaque-fonte::before { content: 'Fonte: '; font-weight: 600; color: var(--gold); }
+
+    /* TABELA */
+    .artigo-tabela-wrap { overflow-x: auto; margin: 28px 0; }
+    .artigo-tabela { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .artigo-tabela th {
+      background: var(--dark2); color: var(--gold);
+      font-family: 'Raleway', sans-serif; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase; font-size: 12px;
+      padding: 12px 16px; text-align: left;
+    }
+    .artigo-tabela td {
+      padding: 11px 16px; border-bottom: 1px solid #d8d8ee;
+      color: var(--muted); line-height: 1.6;
+    }
+    .artigo-tabela tr:last-child td { border-bottom: none; }
+    .artigo-tabela tr:nth-child(even) td { background: rgba(200,168,50,0.04); }
+
+    /* SIDEBAR */
+    .artigo-sidebar { position: sticky; top: 90px; display: flex; flex-direction: column; gap: 24px; }
+
+    .sidebar-card {
+      background: var(--white); border: 1px solid #d8d8ee;
+      border-radius: 6px; padding: 28px 24px;
+    }
+    .sidebar-card h4 { font-size: 17px; color: var(--dark); margin-bottom: 12px; }
+    .sidebar-card p { font-size: 14px; line-height: 1.65; color: var(--muted); margin-bottom: 16px; }
+
+    .btn-sidebar {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--gold); color: var(--dark);
+      font-family: 'Raleway', sans-serif; font-size: 13px; font-weight: 700;
+      letter-spacing: 0.06em; padding: 12px 20px; border-radius: var(--radius);
+      text-decoration: none; transition: background 0.2s, transform 0.15s; width: 100%;
+    }
+    .btn-sidebar:hover { background: var(--gold-lt); transform: translateY(-1px); }
+    .btn-sidebar svg { width: 18px; height: 18px; fill: var(--dark); flex-shrink: 0; }
+
+    .refs-list { display: flex; flex-direction: column; gap: 2px; }
+    .ref-item {
+      display: flex; flex-direction: column; gap: 3px;
+      padding: 10px 12px; border-radius: var(--radius);
+      border: 1px solid transparent;
+      text-decoration: none; color: var(--text);
+      font-size: 14px; font-weight: 500; line-height: 1.4;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .ref-item:hover { background: rgba(200,168,50,0.07); border-color: rgba(200,168,50,0.35); }
+    .ref-item span { font-size: 12px; color: var(--muted); font-weight: 400; }
+    .ref-item .ref-ext { font-size: 11px; color: var(--gold); letter-spacing: 0.04em; }
+
+    /* CHECKLIST */
+    .doc-checklist { list-style: none; padding-left: 0; margin-bottom: 18px; }
+    .doc-checklist li {
+      font-size: 15px; line-height: 1.7; color: var(--muted);
+      padding: 8px 0 8px 32px; position: relative;
+      border-bottom: 1px solid rgba(13,31,53,0.07);
+    }
+    .doc-checklist li:last-child { border-bottom: none; }
+    .doc-checklist li::before {
+      content: '✓'; position: absolute; left: 0; top: 8px;
+      color: var(--gold); font-weight: 700; font-size: 14px;
+    }
+    .doc-checklist li strong { color: var(--text); display: block; font-size: 14px; margin-bottom: 2px; }
+
+    /* GRUPO DE DOCUMENTOS */
+    .doc-group { margin-bottom: 28px; }
+    .doc-group-title {
+      font-family: 'Raleway', sans-serif; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 10px; padding-bottom: 6px;
+      border-bottom: 1px solid rgba(200,168,50,0.25);
+    }
+
+    /* CTA FINAL */
+    .artigo-cta {
+      background: var(--dark2); border-radius: 6px; padding: 40px;
+      margin-top: 48px; display: flex; align-items: center; gap: 32px;
+      border: 1px solid rgba(200,168,50,0.2);
+    }
+    .artigo-cta-text h3 { color: var(--white); font-size: 22px; margin-bottom: 8px; }
+    .artigo-cta-text p { color: rgba(255,255,255,0.55); font-size: 14px; line-height: 1.65; margin: 0; }
+    .btn-cta-artigo {
+      flex-shrink: 0; display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold); color: var(--dark);
+      font-family: 'Raleway', sans-serif; font-size: 13px; font-weight: 700;
+      letter-spacing: 0.06em; padding: 14px 24px; border-radius: var(--radius);
+      text-decoration: none; white-space: nowrap; transition: background 0.2s, transform 0.15s;
+    }
+    .btn-cta-artigo:hover { background: var(--gold-lt); transform: translateY(-1px); }
+    .btn-cta-artigo svg { width: 18px; height: 18px; fill: var(--dark); }
+
+    @media (max-width: 900px) {
+      .artigo-hero { padding: 110px 24px 56px; }
+      .breadcrumb { padding: 14px 24px; }
+      .artigo-layout { grid-template-columns: 1fr; padding: 40px 24px 64px; gap: 40px; }
+      .artigo-sidebar { position: static; }
+      .artigo-cta { flex-direction: column; }
+    }
+
+
+    /* ── MOBILE MENU ────────────────────────────── */
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px 4px;
+      z-index: 110;
+    }
+    .nav-burger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10,18,28,0.97);
+      z-index: 105;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      backdrop-filter: blur(12px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .mobile-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .mobile-overlay a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 22px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      padding: 14px 40px;
+      border-radius: var(--radius);
+      transition: color 0.2s, background 0.2s;
+      width: 260px;
+      text-align: center;
+    }
+    .mobile-overlay a:hover,
+    .mobile-overlay a.active { color: var(--gold); }
+    .mobile-overlay .mob-divider {
+      width: 40px; height: 1px;
+      background: rgba(200,168,50,0.25);
+      margin: 8px 0;
+    }
+    .mobile-overlay .mob-cta {
+      margin-top: 8px;
+      background: var(--gold);
+      color: var(--dark) !important;
+      font-family: 'Raleway', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+    .mobile-overlay .mob-cta:hover { background: var(--gold-lt); color: var(--dark) !important; }
+
+    @media (max-width: 900px) {
+      .nav-burger { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html"><span>Thiago Souza</span> Advocacia e Consultoria Jurídica</a>
+  <ul class="nav-links">
+    <li><a href="index.html#servicos">Serviços</a></li>
+    <li><a href="index.html#sobre">Sobre</a></li>
+    <li><a href="artigos.html" class="active">Artigos</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+    <li><a href="index.html#contato" class="nav-cta">Fale Conosco</a></li>
+  </ul>
+  <button class="nav-burger" id="navBurger" onclick="toggleMobileMenu()" aria-label="Abrir menu de navegação" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- HERO DO ARTIGO -->
+<section class="artigo-hero">
+  <div class="artigo-hero-inner">
+    <div class="artigo-hero-meta">
+      <span class="artigo-hero-cat">Direito de Família</span>
+      <span class="artigo-hero-data">14 de maio de 2026</span>
+    </div>
+    <h1>Divórcio em cartório: quando é possível, quanto custa e como funciona</h1>
+    <p class="artigo-hero-sub">Muitas pessoas não sabem que o divórcio pode ser concluído em dias, sem processo judicial. Entenda os requisitos, os documentos necessários, os custos envolvidos e o que pode, ou não, ser resolvido na escritura pública.</p>
+  </div>
+</section>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">Início</a>
+  <span>›</span>
+  <a href="artigos.html" class="active">Artigos</a>
+  <span>›</span>
+  <span>Divórcio em cartório: guia completo</span>
+</div>
+
+<!-- LAYOUT PRINCIPAL -->
+<div class="artigo-layout">
+
+  <!-- CORPO DO ARTIGO -->
+  <article class="artigo-corpo reveal">
+
+    <h2>Um pouco de história: como o divórcio em cartório surgiu</h2>
+    <p>Durante décadas, todo divórcio no Brasil passou obrigatoriamente pelo Poder Judiciário, independentemente de haver consenso entre os cônjuges, bens a partilhar ou litígio de qualquer espécie. Além disso, a legislação exigia um período prévio de separação, judicial ou de fato, antes que o divórcio pudesse ser requerido.</p>
+    <p>Esse cenário começou a mudar em 2007, com a edição da <strong>Lei nº 11.441/2007</strong>, que introduziu no ordenamento brasileiro a possibilidade de divórcio consensual pela via extrajudicial, realizado diretamente em cartório por escritura pública. A mesma lei criou também o inventário extrajudicial, respondendo à demanda histórica por desjudicialização de procedimentos não conflituosos.</p>
+    <p>Em 2010, a <strong>Emenda Constitucional nº 66</strong> aprofundou essa transformação ao alterar o art. 226, §6°, da Constituição Federal, eliminando o requisito de separação prévia e permitindo que o divórcio seja requerido diretamente, a qualquer tempo, sem necessidade de aguardar qualquer prazo mínimo de separação. Hoje, o divórcio consensual extrajudicial está regulamentado, no plano processual, pelo art. 733 do Código de Processo Civil de 2015 e, no plano procedimental, pela <strong>Resolução nº 35/2007 do Conselho Nacional de Justiça</strong>, que estabelece as normas aplicáveis em todo o território nacional.</p>
+
+    <div class="artigo-destaque">
+      <p>O divórcio pode ser realizado de duas formas: pela via judicial, perante o Poder Judiciário, ou pela via extrajudicial, em qualquer Tabelionato de Notas do país, por meio de escritura pública. Quando os requisitos legais estão presentes, a via extrajudicial é incomparavelmente mais rápida, menos onerosa e igualmente eficaz.</p>
+      <span class="destaque-fonte">EC nº 66/2010; Lei nº 11.441/2007; CPC/2015, art. 733; Resolução CNJ nº 35/2007</span>
+    </div>
+
+    <h2>Quando é possível fazer o divórcio em cartório?</h2>
+    <p>O art. 733 do CPC/2015 e a Resolução CNJ nº 35/2007 condicionam a via extrajudicial ao preenchimento cumulativo de três requisitos. Se qualquer um deles estiver ausente, o divórcio deverá necessariamente ser processado pelo Poder Judiciário.</p>
+    <ul>
+      <li><strong>Consenso pleno entre os cônjuges.</strong> Ambos devem concordar com o divórcio em si e com todas as suas consequências: partilha de bens, eventual estipulação de alimentos entre os ex-cônjuges e a questão do nome. Qualquer discordância, ainda que pontual, impede a via extrajudicial e torna obrigatório o processo judicial.</li>
+      <li><strong>Inexistência de filhos menores de 18 anos ou incapazes.</strong> A presença de filhos menores ou de qualquer pessoa interditada judicialmente entre os descendentes do casal torna o divórcio judicial obrigatório, independentemente dos demais fatores. O Ministério Público e o juiz atuam nesses casos como fiscal dos interesses dos incapazes. Filhos maiores e capazes não impedem a via extrajudicial.</li>
+      <li><strong>Assistência obrigatória de advogado.</strong> A escritura pública de divórcio exige que ambos os cônjuges estejam assistidos por profissional da advocacia devidamente inscrito na OAB. Quando não há conflito de interesses, um único advogado pode assistir os dois. Quando há interesses contrapostos, cada cônjuge deve ter seu próprio patrono.</li>
+    </ul>
+    <p>Reunidos esses três requisitos, qualquer Tabelionato de Notas do país está habilitado a lavrar a escritura, independentemente do domicílio dos cônjuges ou do local onde o casamento foi celebrado.</p>
+
+    <h2>Divórcio extrajudicial x divórcio judicial: diferenças práticas</h2>
+    <p>A escolha entre as duas vias tem impacto direto no tempo, no custo e no desgaste emocional das partes. As principais diferenças são:</p>
+
+    <div class="artigo-tabela-wrap">
+      <table class="artigo-tabela">
+        <thead>
+          <tr>
+            <th>Aspecto</th>
+            <th>Extrajudicial (cartório)</th>
+            <th>Judicial</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Onde é realizado</td>
+            <td>Tabelionato de Notas</td>
+            <td>Vara de Família ou Vara Cível</td>
+          </tr>
+          <tr>
+            <td>Prazo médio</td>
+            <td>Dias a poucas semanas</td>
+            <td>Meses a anos (a depender de litígios)</td>
+          </tr>
+          <tr>
+            <td>Filhos incapazes</td>
+            <td>Não é admitido nessa hipótese</td>
+            <td>Obrigatório nessa hipótese</td>
+          </tr>
+          <tr>
+            <td>Consenso</td>
+            <td>Obrigatório</td>
+            <td>Não exigido (pode ser litigioso)</td>
+          </tr>
+          <tr>
+            <td>Advogado</td>
+            <td>Obrigatório (pode ser único)</td>
+            <td>Obrigatório (cada parte pode ter o seu)</td>
+          </tr>
+          <tr>
+            <td>Custas judiciais</td>
+            <td>Não há</td>
+            <td>Sim (taxa judiciária e eventuais perícias)</td>
+          </tr>
+          <tr>
+            <td>Emolumentos</td>
+            <td>Tabelados pelo Tribunal de Justiça estadual</td>
+            <td>Não se aplica</td>
+          </tr>
+          <tr>
+            <td>Resultado final</td>
+            <td>Escritura pública (título hábil para averbação)</td>
+            <td>Sentença judicial (após trânsito em julgado)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>A escritura pública de divórcio produz os mesmos efeitos jurídicos que a sentença judicial: dissolve o vínculo matrimonial, permite a averbação no registro civil e habilita os ex-cônjuges a contrair novo casamento. Ela não é uma solução de segunda categoria, é a mesma solução com muito menos burocracia.</p>
+
+    <h2>O que pode ser resolvido na escritura?</h2>
+    <p>A escritura pública de divórcio não se limita a dissolver o vínculo matrimonial. Ela pode, e em regra deve, contemplar todas as questões patrimoniais e pessoais decorrentes do término do casamento que sejam passíveis de resolução consensual entre os cônjuges.</p>
+
+    <h3>Partilha de bens</h3>
+    <p>Os bens comuns do casal, apurados conforme o regime de bens adotado no casamento, podem ser partilhados integralmente na própria escritura de divórcio. Não há obrigação de partilhar todos os bens no momento do divórcio: é possível dissolver o vínculo conjugal deixando a partilha para momento posterior, por escritura separada, desde que haja concordância expressa de ambos nesse sentido.</p>
+    <p>Quando há bens imóveis a serem transferidos, a escritura de divórcio com partilha serve como título hábil para registro no Cartório de Registro de Imóveis, após o recolhimento do Imposto de Transmissão de Bens Imóveis (ITBI) municipal, quando devido, ou do Imposto sobre Transmissão Causa Mortis e Doação (ITCMD) estadual, na hipótese de a partilha ser desigual e caracterizar doação de um cônjuge ao outro.</p>
+
+    <h3>Alimentos entre os ex-cônjuges</h3>
+    <p>A escritura pode estipular, modificar ou renunciar a alimentos devidos entre os próprios cônjuges, nos termos dos arts. 1.694 e seguintes do Código Civil. É importante distinguir: os alimentos tratados aqui são os devidos de um cônjuge ao outro, não os devidos aos filhos. Alimentos para filhos menores não podem ser estipulados em divórcio extrajudicial, pois essa matéria exige intervenção judicial em razão do interesse do incapaz.</p>
+
+    <h3>Nome após o divórcio</h3>
+    <p>Cada cônjuge pode, na escritura, optar por retomar o nome de solteiro ou, se desejar, manter o sobrenome adquirido com o casamento. A decisão é individual e não depende da anuência do outro cônjuge. A escritura lavrada serve como documento suficiente para a regularização do nome perante a Receita Federal, os bancos, o DETRAN e os demais órgãos públicos e privados.</p>
+
+    <h2>E se houver nascituro?</h2>
+    <p>A existência de nascituro, ou seja, de filho ainda não nascido concebido durante o casamento, é equiparada, para fins de impedimento da via extrajudicial, à presença de filho menor de idade. Isso porque o nascituro tem personalidade jurídica resguardada por lei (art. 2° do Código Civil) e seus interesses devem ser tutelados judicialmente. Nessa hipótese, o divórcio deve ser processado pela via judicial, com intervenção do Ministério Público.</p>
+
+    <h2>É possível converter separação em divórcio extrajudicial?</h2>
+    <p>Sim. O art. 36 da Resolução CNJ nº 35/2007 autoriza expressamente que a conversão de separação judicial ou extrajudicial em divórcio seja feita pela via extrajudicial, desde que preenchidos os requisitos do art. 733 do CPC/2015. Para tanto, é necessário apresentar ao tabelionato a certidão da sentença ou da escritura de separação, atualizada, além dos demais documentos do caso. O procedimento é idêntico ao do divórcio direto.</p>
+
+    <h2>Quais documentos são necessários?</h2>
+    <p>A documentação exigida varia conforme o regime de bens do casamento, a existência ou não de partilha e a situação patrimonial do casal. A seguir, relacionamos os documentos mais comuns solicitados pelos tabelionatos:</p>
+
+    <div class="doc-group">
+      <p class="doc-group-title">De ambos os cônjuges</p>
+      <ul class="doc-checklist">
+        <li><strong>Documento de identidade (RG ou CNH) e CPF</strong></li>
+        <li><strong>Certidão de casamento atualizada</strong> expedida há no máximo 90 dias, em regra</li>
+        <li><strong>Comprovante de residência</strong> de cada cônjuge</li>
+        <li><strong>Certidão de nascimento dos filhos</strong>, quando existirem, para confirmar que todos são maiores e capazes</li>
+        <li><strong>Pacto antenupcial registrado em cartório</strong>, se houver (para os casamentos celebrados em regime diverso da comunhão parcial)</li>
+      </ul>
+    </div>
+
+    <div class="doc-group">
+      <p class="doc-group-title">Dos bens imóveis (quando houver partilha)</p>
+      <ul class="doc-checklist">
+        <li><strong>Matrícula atualizada</strong> do Cartório de Registro de Imóveis (expedida, em regra, há no máximo 30 dias)</li>
+        <li><strong>Certidão de ônus reais</strong></li>
+        <li><strong>IPTU</strong> do exercício corrente (guia e comprovante de pagamento ou de isenção)</li>
+        <li><strong>Certidão Negativa de Débitos Municipais</strong>, quando exigida pelo tabelionato ou pelo Cartório de Registro de Imóveis</li>
+      </ul>
+    </div>
+
+    <div class="doc-group">
+      <p class="doc-group-title">Dos demais bens (quando houver partilha)</p>
+      <ul class="doc-checklist">
+        <li><strong>Veículos:</strong> CRLV e declaração de quitação de débitos do DETRAN/RENAVAM</li>
+        <li><strong>Contas bancárias e aplicações:</strong> extrato com posição do saldo em data de referência acordada entre os cônjuges</li>
+        <li><strong>Participações societárias:</strong> contrato social ou estatuto atualizado, certidão da Junta Comercial e balanço patrimonial para apuração do valor da quota ou ação</li>
+      </ul>
+    </div>
+
+    <p>O advogado responsável pelo divórcio orientará sobre os documentos específicos exigidos pelo tabelionato escolhido, que pode ter requisitos adicionais conforme a prática local ou a complexidade do caso.</p>
+
+    <h2>Quanto custa o divórcio em cartório?</h2>
+    <p>O custo total do divórcio extrajudicial é composto, em regra, por duas parcelas principais:</p>
+
+    <p><strong>1. Emolumentos cartorários</strong></p>
+    <p>São as taxas cobradas pelo Tabelionato de Notas pela lavratura da escritura pública. Sua tabela é regulamentada pelo Tribunal de Justiça de cada estado, nos termos do art. 236 da Constituição Federal e da Lei nº 10.169/2000. O valor varia conforme o estado e o valor dos bens envolvidos na partilha. Para divórcios sem partilha de bens, os emolumentos costumam ser significativamente menores, pois o ato é mais simples. A tabela atualizada pode ser consultada diretamente no site do Tribunal de Justiça do estado onde será lavrada a escritura.</p>
+
+    <p><strong>2. Honorários advocatícios</strong></p>
+    <p>A lei exige a presença de advogado, mas não fixa os honorários, que são acordados livremente entre o profissional e o cliente. Podem ser balizados pela tabela de honorários referenciais da OAB do estado. Em geral, os honorários para divórcio extrajudicial levam em conta a complexidade do patrimônio a ser partilhado, o número de questões a serem resolvidas na escritura e o tempo de trabalho necessário para a elaboração da minuta.</p>
+
+    <div class="artigo-destaque">
+      <p>Pessoas que comprovem insuficiência de recursos para arcar com as custas do procedimento têm direito à gratuidade dos emolumentos cartorários, nos termos do art. 1.512, parágrafo único, do Código Civil, aplicável por analogia, e da legislação estadual de cada unidade da federação. O advogado pode ser indicado pela Defensoria Pública, nos casos em que o casal não disponha de recursos para contratar um profissional particular.</p>
+      <span class="destaque-fonte">CC/2002, art. 1.512, parágrafo único; Lei nº 10.169/2000; legislações estaduais de emolumentos</span>
+    </div>
+
+    <h2>Quanto tempo leva o divórcio em cartório?</h2>
+    <p>Esta é, sem dúvida, a maior vantagem prática da via extrajudicial. Com a documentação completa reunida e a minuta da escritura aprovada pelo advogado e pelos cônjuges, a lavratura pode ocorrer em <strong>poucos dias</strong>, podendo levar até algumas semanas em casos que envolvam partilha de patrimônio mais complexo ou documentação com prazos de renovação.</p>
+    <p>O divórcio judicial consensual, por comparação, tramita pelo rito do art. 731 do CPC/2015 e costuma levar de 3 a 12 meses em varas de família com movimento médio, podendo ser mais longo em comarcas com maior volume de processos. O divórcio litigioso, quando há disputas sobre guarda, alimentos ou partilha, pode se estender por anos.</p>
+    <p>A rapidez do divórcio extrajudicial depende diretamente da organização da documentação e da objetividade dos cônjuges na definição dos termos do acordo. A etapa mais demorada, na prática, costuma ser a coleta de certidões imobiliárias e extratos bancários, não o procedimento em si.</p>
+
+    <h2>O que acontece após a escritura?</h2>
+    <p>Lavrada a escritura pública de divórcio, ela precisa ser <strong>averbada</strong> no assento de casamento do casal, perante o Cartório de Registro Civil onde o matrimônio foi celebrado. Essa averbação é que efetivamente dissolve o vínculo conjugal perante terceiros e perante o Estado. Sem ela, o divórcio não produz efeitos erga omnes, embora seja válido entre as partes desde a assinatura.</p>
+    <p>A averbação é simples e rápida: basta apresentar a certidão da escritura ao Cartório de Registro Civil competente. O advogado responsável normalmente se encarrega dessa providência ou orienta os clientes sobre como realizá-la.</p>
+    <p>Se houver bens imóveis a serem transferidos, a escritura também deverá ser levada a registro no Cartório de Registro de Imóveis da comarca onde cada imóvel está situado, após o recolhimento dos tributos incidentes, quando devidos. Documentos como CNH e passaporte, que reflitam o estado civil ou o nome anterior, poderão ser atualizados após a averbação no registro civil, com a apresentação da certidão de divórcio.</p>
+
+    <h2>Um exemplo prático</h2>
+    <p>Carlos e Ana são casados há oito anos em regime de comunhão parcial de bens. Têm dois filhos, ambos maiores de 18 anos e plenamente capazes. O casal possui um apartamento adquirido na constância do casamento e uma conta conjunta em banco. Ambos concordam com o divórcio e com a divisão igual dos bens.</p>
+    <p>Nesse caso, todos os requisitos legais estão presentes: há consenso, não há filhos incapazes e o casal contratará um único advogado para assistir ambos no ato. O advogado elabora a minuta da escritura, contemplando a dissolução do vínculo, a partilha do apartamento com a transferência da fração de Carlos para Ana (mediante recolhimento do ITBI ou ITCMD conforme o caso) e a divisão do saldo bancário. Com a documentação reunida, a escritura é lavrada no tabelionato em data agendada. Após a assinatura, o próprio advogado providencia a averbação no Cartório de Registro Civil e o registro da partilha imobiliária. Em poucas semanas, todo o processo está concluído.</p>
+    <p>Se um dos filhos de Carlos e Ana fosse menor de idade, ainda que apenas um deles, o casal estaria obrigado a recorrer ao Poder Judiciário, não importando o grau de consenso entre eles.</p>
+
+    <h2>Por onde começar?</h2>
+    <p>O caminho mais indicado é consultar um advogado antes de qualquer outra providência. O profissional verificará se os requisitos estão preenchidos, identificará o patrimônio comum, orientará sobre o regime de bens e as consequências tributárias da partilha pretendida, elaborará a minuta da escritura em conjunto com o tabelião e acompanhará o procedimento até a averbação final no registro civil e, se necessário, nos registros imobiliários.</p>
+    <p>Iniciar o processo com clareza sobre o que cada parte deseja e com a documentação já levantada é a forma mais eficiente de garantir que o divórcio extrajudicial seja concluído com a rapidez e a segurança jurídica que a via cartorária pode oferecer.</p>
+
+    <!-- CTA FINAL -->
+    <div class="artigo-cta reveal">
+      <div class="artigo-cta-text">
+        <h3>Pensando em se divorciar?</h3>
+        <p>Avalie com um especialista se o seu caso comporta a via extrajudicial e quais são os próximos passos. O atendimento é virtual, ágil e comprometido com a defesa dos seus interesses.</p>
+      </div>
+      <a class="btn-cta-artigo" href="https://wa.me/5583988791232?text=Olá,+li+o+artigo+sobre+divórcio+em+cartório+e+gostaria+de+uma+consulta." target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Consultar agora
+      </a>
+    </div>
+
+    <p style="margin-top:32px; font-size:12px; color:var(--muted); border-top:1px solid rgba(13,31,53,0.1); padding-top:20px;">
+      <em>Este artigo tem caráter informativo e não constitui consultoria jurídica. As informações são baseadas na EC nº 66/2010, na Lei nº 11.441/2007, no CPC/2015 (arts. 731 a 733), na Resolução CNJ nº 35/2007 e no Código Civil (Lei nº 10.406/2002). Para análise do seu caso concreto, consulte um advogado.</em>
+    </p>
+
+  </article>
+
+  <!-- SIDEBAR -->
+  <aside class="artigo-sidebar reveal from-right">
+
+    <div class="sidebar-card">
+      <h4>Precisa de ajuda?</h4>
+      <p>Atendimento jurídico virtual especializado em Direito de Família, divórcio e partilha de bens.</p>
+      <a class="btn-sidebar" href="https://wa.me/5583988791232?text=Olá!+Vi+o+site+e+gostaria+de+uma+consulta." target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Falar com Dr. Thiago
+      </a>
+    </div>
+
+    <div class="sidebar-card">
+      <h4>Referências</h4>
+      <div class="refs-list">
+        <a class="ref-item" href="https://www.planalto.gov.br/ccivil_03/constituicao/emendas/emc/emc66.htm" target="_blank" rel="noopener">
+          EC nº 66/2010
+          <span>Eliminou o requisito de separação prévia para o divórcio</span>
+          <span class="ref-ext">planalto.gov.br ↗</span>
+        </a>
+        <a class="ref-item" href="https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2007/lei/l11441.htm" target="_blank" rel="noopener">
+          Lei nº 11.441/2007
+          <span>Institui o divórcio e o inventário extrajudicial no Brasil</span>
+          <span class="ref-ext">planalto.gov.br ↗</span>
+        </a>
+        <a class="ref-item" href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13105.htm" target="_blank" rel="noopener">
+          CPC/2015, arts. 731–733
+          <span>Procedimento do divórcio consensual extrajudicial</span>
+          <span class="ref-ext">planalto.gov.br ↗</span>
+        </a>
+        <a class="ref-item" href="https://atos.cnj.jus.br/atos/detalhar/179" target="_blank" rel="noopener">
+          Resolução CNJ nº 35/2007
+          <span>Normas procedimentais para divórcio e inventário extrajudicial</span>
+          <span class="ref-ext">cnj.jus.br ↗</span>
+        </a>
+        <a class="ref-item" href="https://www.planalto.gov.br/ccivil_03/leis/2002/l10406compilada.htm" target="_blank" rel="noopener">
+          Código Civil, arts. 1.571, 1.694 e ss.
+          <span>Dissolução do casamento e alimentos</span>
+          <span class="ref-ext">planalto.gov.br ↗</span>
+        </a>
+        <a class="ref-item" href="https://www.planalto.gov.br/ccivil_03/leis/l10169.htm" target="_blank" rel="noopener">
+          Lei nº 10.169/2000
+          <span>Regulamenta os emolumentos dos serviços notariais e registrais</span>
+          <span class="ref-ext">planalto.gov.br ↗</span>
+        </a>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+
+<footer class="reveal">
+  <div class="footer-logo"><span>Thiago Souza</span> Advocacia e Consultoria Jurídica</div>
+  <p>© 2026 · Thiago Souza Advocacia e Consultoria Jurídica. Todos os direitos reservados. OAB/PB 32.907</p>
+  <p style="font-size:11px;color:rgba(255,255,255,0.2);">Este site não constitui serviço oficial de governo. Trabalhamos exclusivamente com serviços jurídicos.</p>
+</footer>
+<a class="wa-float" href="https://wa.me/5583988791232?text=Olá!+Vi+o+site+e+gostaria+de+uma+consulta." target="_blank" title="Fale pelo WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+<script>
+  (function(){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0 });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+    setTimeout(function(){
+      document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('visible'); });
+    }, 400);
+  })();
+</script>
+
+<div class="mobile-overlay" id="mobileMenu" role="dialog" aria-label="Menu de navegação">
+  <a href="index.html#servicos" onclick="closeMobileMenu()">Serviços</a>
+  <a href="index.html#sobre" onclick="closeMobileMenu()">Sobre</a>
+  <a href="artigos.html" class="active" onclick="closeMobileMenu()">Artigos</a>
+  <a href="index.html#faq" onclick="closeMobileMenu()">FAQ</a>
+  <div class="mob-divider"></div>
+  <a href="index.html#contato" class="mob-cta" onclick="closeMobileMenu()">Fale Conosco</a>
+</div>
+
+<script>
+  function toggleMobileMenu() {
+    var menu   = document.getElementById('mobileMenu');
+    var burger = document.getElementById('navBurger');
+    var isOpen = menu.classList.contains('active');
+    if (isOpen) {
+      menu.classList.remove('active');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    } else {
+      menu.classList.add('active');
+      burger.classList.add('open');
+      burger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobileMenu').classList.remove('active');
+    document.getElementById('navBurger').classList.remove('open');
+    document.getElementById('navBurger').setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeMobileMenu();
+  });
+</script>
+</body>
+</html>

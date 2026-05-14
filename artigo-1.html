@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cobrança indevida: quando o consumidor tem direito à devolução em dobro?</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:    #c8a832;
+      --gold-lt: #d9bc55;
+      --dark:    #0d1f35;
+      --dark2:   #1a2f4a;
+      --cream:   #f4f4ff;
+      --cream2:  #e8e8f5;
+      --text:    #1a2f4a;
+      --muted:   #4a6080;
+      --white:   #ffffff;
+      --radius:  4px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Raleway', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
+
+    .section-label {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+    }
+    .divider { width: 48px; height: 2px; background: var(--gold); margin: 16px 0 24px; }
+
+    /* NAVBAR */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(26,22,16,0.96); backdrop-filter: blur(8px);
+      padding: 16px 40px; display: flex; align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(233,205,92,0.25);
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; color: var(--white); letter-spacing: 0.04em; text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    .nav-cta { background: var(--gold); color: var(--white) !important; padding: 8px 20px; border-radius: var(--radius); font-weight: 500 !important; }
+    .nav-cta:hover { background: var(--gold-lt) !important; }
+
+    /* FOOTER */
+    footer { background: var(--dark2); border-top: 1px solid rgba(233,205,92,0.2); padding: 24px 80px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    footer p { font-size: 12px; color: rgba(255,255,255,0.35); }
+    footer .footer-logo { font-family: 'Playfair Display', serif; font-size: 16px; color: rgba(255,255,255,0.5); }
+    footer .footer-logo span { color: var(--gold); }
+
+    /* WA FLOAT */
+    .wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 200; width: 56px; height: 56px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4); text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+    .wa-float:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
+    .wa-float svg { width: 30px; height: 30px; fill: white; }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.7s cubic-bezier(.22,.68,0,1.2), transform 0.7s cubic-bezier(.22,.68,0,1.2); }
+    .reveal.from-left  { transform: translateX(-44px); }
+    .reveal.from-right { transform: translateX(44px); }
+    .reveal.visible    { opacity: 1; transform: translate(0,0); }
+    .reveal[data-delay="1"] { transition-delay: 0.08s; }
+    .reveal[data-delay="2"] { transition-delay: 0.17s; }
+    .reveal[data-delay="3"] { transition-delay: 0.26s; }
+    .reveal[data-delay="4"] { transition-delay: 0.35s; }
+    .reveal[data-delay="5"] { transition-delay: 0.44s; }
+    .reveal[data-delay="6"] { transition-delay: 0.53s; }
+
+    @media (max-width: 900px) {
+      nav { padding: 14px 24px; }
+      .nav-links { display: none; }
+      footer { padding: 20px 24px; flex-direction: column; text-align: center; }
+    }
+
+
+    /* HERO DO ARTIGO */
+    .artigo-hero {
+      background: var(--dark); padding: 140px 80px 72px;
+      position: relative; overflow: hidden;
+    }
+    .artigo-hero::before {
+      content: ''; position: absolute; top: -60px; right: -80px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(200,168,50,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .artigo-hero::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .artigo-hero-inner { position: relative; z-index: 1; max-width: 800px; }
+    .artigo-hero-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; flex-wrap: wrap; }
+    .artigo-hero-cat {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--dark); background: var(--gold); padding: 5px 14px; border-radius: 20px;
+    }
+    .artigo-hero-data { font-size: 13px; color: rgba(255,255,255,0.45); }
+    .artigo-hero h1 { font-size: clamp(28px, 3.5vw, 46px); color: var(--white); line-height: 1.2; margin-bottom: 20px; }
+    .artigo-hero-sub { font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 660px; }
+
+    /* BREADCRUMB */
+    .breadcrumb { padding: 16px 80px; background: var(--cream2); border-bottom: 1px solid rgba(13,31,53,0.1); display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
+    .breadcrumb a { color: var(--gold); text-decoration: none; transition: opacity .2s; }
+    .breadcrumb a:hover { opacity: .75; }
+    .breadcrumb span { opacity: .5; }
+
+    /* LAYOUT ARTIGO */
+    .artigo-layout {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 320px;
+      gap: 60px; padding: 64px 80px 100px; align-items: start;
+    }
+
+    /* CORPO DO ARTIGO */
+    .artigo-corpo { max-width: 720px; }
+    .artigo-corpo h2 { font-size: 26px; color: var(--dark); margin: 40px 0 16px; }
+    .artigo-corpo h2:first-child { margin-top: 0; }
+    .artigo-corpo p { font-size: 15px; line-height: 1.85; color: var(--muted); margin-bottom: 18px; }
+    .artigo-corpo strong { color: var(--text); }
+    .artigo-corpo ul, .artigo-corpo ol { padding-left: 24px; margin-bottom: 18px; }
+    .artigo-corpo li { font-size: 15px; line-height: 1.8; color: var(--muted); margin-bottom: 6px; }
+
+    .artigo-destaque {
+      border-left: 3px solid var(--gold); padding: 18px 24px;
+      background: rgba(200,168,50,0.06); border-radius: 0 4px 4px 0;
+      margin: 28px 0;
+    }
+    .artigo-destaque p { margin: 0; font-style: italic; color: var(--text); font-size: 15px; }
+    .destaque-fonte {
+      display: block; margin-top: 12px;
+      font-size: 11px; color: var(--muted); font-style: normal;
+      letter-spacing: 0.04em; opacity: 0.8;
+    }
+    .destaque-fonte::before { content: 'Fonte: '; font-weight: 600; color: var(--gold); }
+
+    /* SIDEBAR */
+    .artigo-sidebar { position: sticky; top: 90px; display: flex; flex-direction: column; gap: 24px; }
+
+    .sidebar-card {
+      background: var(--white); border: 1px solid #d8d8ee;
+      border-radius: 6px; padding: 28px 24px;
+    }
+    .sidebar-card h4 { font-size: 17px; color: var(--dark); margin-bottom: 12px; }
+    .sidebar-card p { font-size: 14px; line-height: 1.65; color: var(--muted); margin-bottom: 16px; }
+
+    .btn-sidebar {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--gold); color: var(--dark);
+      font-family: 'Raleway', sans-serif; font-size: 13px; font-weight: 700;
+      letter-spacing: 0.06em; padding: 12px 20px; border-radius: var(--radius);
+      text-decoration: none; transition: background 0.2s, transform 0.15s; width: 100%;
+    }
+    .btn-sidebar:hover { background: var(--gold-lt); transform: translateY(-1px); }
+    .btn-sidebar svg { width: 18px; height: 18px; fill: var(--dark); flex-shrink: 0; }
+
+    .refs-list { display: flex; flex-direction: column; gap: 2px; }
+    .ref-item {
+      display: flex; flex-direction: column; gap: 3px;
+      padding: 10px 12px; border-radius: var(--radius);
+      border: 1px solid transparent;
+      text-decoration: none; color: var(--text);
+      font-size: 14px; font-weight: 500; line-height: 1.4;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .ref-item:hover { background: rgba(200,168,50,0.07); border-color: rgba(200,168,50,0.35); }
+    .ref-item span { font-size: 12px; color: var(--muted); font-weight: 400; }
+    .ref-item .ref-ext { font-size: 11px; color: var(--gold); letter-spacing: 0.04em; }
+
+    /* CTA FINAL */
+    .artigo-cta {
+      background: var(--dark2); border-radius: 6px; padding: 40px;
+      margin-top: 48px; display: flex; align-items: center; gap: 32px;
+      border: 1px solid rgba(200,168,50,0.2);
+    }
+    .artigo-cta-text h3 { color: var(--white); font-size: 22px; margin-bottom: 8px; }
+    .artigo-cta-text p { color: rgba(255,255,255,0.55); font-size: 14px; line-height: 1.65; margin: 0; }
+    .btn-cta-artigo {
+      flex-shrink: 0; display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold); color: var(--dark);
+      font-family: 'Raleway', sans-serif; font-size: 13px; font-weight: 700;
+      letter-spacing: 0.06em; padding: 14px 24px; border-radius: var(--radius);
+      text-decoration: none; white-space: nowrap; transition: background 0.2s, transform 0.15s;
+    }
+    .btn-cta-artigo:hover { background: var(--gold-lt); transform: translateY(-1px); }
+    .btn-cta-artigo svg { width: 18px; height: 18px; fill: var(--dark); }
+
+    @media (max-width: 900px) {
+      .artigo-hero { padding: 110px 24px 56px; }
+      .breadcrumb { padding: 14px 24px; }
+      .artigo-layout { grid-template-columns: 1fr; padding: 40px 24px 64px; gap: 40px; }
+      .artigo-sidebar { position: static; }
+      .artigo-cta { flex-direction: column; }
+    }
+
+
+    /* ── MOBILE MENU ────────────────────────────── */
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px 4px;
+      z-index: 110;
+    }
+    .nav-burger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10,18,28,0.97);
+      z-index: 105;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      backdrop-filter: blur(12px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .mobile-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .mobile-overlay a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 22px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      padding: 14px 40px;
+      border-radius: var(--radius);
+      transition: color 0.2s, background 0.2s;
+      width: 260px;
+      text-align: center;
+    }
+    .mobile-overlay a:hover,
+    .mobile-overlay a.active { color: var(--gold); }
+    .mobile-overlay .mob-divider {
+      width: 40px; height: 1px;
+      background: rgba(200,168,50,0.25);
+      margin: 8px 0;
+    }
+    .mobile-overlay .mob-cta {
+      margin-top: 8px;
+      background: var(--gold);
+      color: var(--dark) !important;
+      font-family: 'Raleway', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+    .mobile-overlay .mob-cta:hover { background: var(--gold-lt); color: var(--dark) !important; }
+
+    @media (max-width: 900px) {
+      .nav-burger { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+
+<nav>
+  <a class="nav-logo" href="index.html"><span>Thiago Souza</span> Advocacia e Consultoria Jurídica</a>
+  <ul class="nav-links">
+    <li><a href="index.html#servicos">Serviços</a></li>
+    <li><a href="index.html#sobre">Sobre</a></li>
+    <li><a href="artigos.html" class="active">Artigos</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+    <li><a href="index.html#contato" class="nav-cta">Fale Conosco</a></li>
+  </ul>
+  <button class="nav-burger" id="navBurger" onclick="toggleMobileMenu()" aria-label="Abrir menu de navegação" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- HERO DO ARTIGO -->
+<section class="artigo-hero">
+  <div class="artigo-hero-inner">
+    <div class="artigo-hero-meta">
+      <span class="artigo-hero-cat">Direito do Consumidor</span>
+      <span class="artigo-hero-data">10 de maio de 2026</span>
+    </div>
+    <h1>Cobrança indevida: quando o consumidor tem direito à devolução em dobro?</h1>
+    <p class="artigo-hero-sub">O art. 42, parágrafo único, do CDC prevê a repetição do indébito em dobro. Mas nem sempre esse direito é automático: conheça os requisitos e as exceções.</p>
+  </div>
+</section>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">Início</a>
+  <span>›</span>
+  <a href="artigos.html" class="active">Artigos</a>
+  <span>›</span>
+  <span>Cobrança indevida: devolução em dobro</span>
+</div>
+
+<!-- LAYOUT PRINCIPAL -->
+<div class="artigo-layout">
+
+  <!-- CORPO DO ARTIGO -->
+  <article class="artigo-corpo">
+
+    <h2>O que diz o art. 42 do CDC?</h2>
+    <p>O art. 42, parágrafo único, da Lei nº 8.078/1990 (Código de Defesa do Consumidor) estabelece que o consumidor cobrado em quantia indevida tem direito à repetição do indébito, ou seja, à devolução do valor cobrado a mais, <strong>em dobro</strong>, acrescida de correção monetária e juros legais.</p>
+    <p>Na prática, isso significa que, se uma empresa cobra R$ 500 indevidos, pode ser condenada a devolver R$ 1.000, com correção monetária e juros desde a data do pagamento indevido.</p>
+
+    <div class="artigo-destaque">
+      <p>"Na cobrança de débitos, o consumidor inadimplente não será exposto a ridículo, nem será submetido a qualquer tipo de constrangimento ou ameaça. O cobrado em quantia indevida tem direito à repetição do indébito, por valor igual ao dobro do que pagou em excesso, acrescido de correção monetária e juros legais." (Art. 42, parágrafo único, CDC)</p>
+      <span class="destaque-fonte">Lei nº 8.078/1990 (CDC), art. 42, parágrafo único</span>
+    </div>
+
+    <h2>Um exemplo prático</h2>
+    <p>Imagine que Maria recebe a fatura do seu plano de telefonia referente ao mês de março com o valor de R$ 350,00, quando o valor correto do seu pacote contratado é de R$ 200,00. Sem perceber a discrepância, Maria efetua o pagamento integral. Ao identificar a cobrança indevida de R$ 150,00 no mês seguinte, ela comunica a operadora, que se recusa a devolver a diferença.</p>
+    <p>Nesse caso, Maria tem direito à repetição do indébito em dobro: poderá pleitear judicialmente a devolução de R$ 300,00 (o dobro dos R$ 150,00 cobrados indevidamente), acrescidos de correção monetária e juros legais desde a data do pagamento. Se houver constrangimento adicional, como ameaça de negativação por suposta inadimplência, caberá ainda pedido de dano moral cumulado.</p>
+
+    <h2>Quais são os requisitos para a devolução em dobro?</h2>
+    <p>Para fazer jus à devolução em dobro, é necessário preencher três requisitos básicos:</p>
+    <ul>
+      <li><strong>Relação de consumo:</strong> deve existir uma relação jurídica entre consumidor (destinatário final) e fornecedor, nos termos dos arts. 2º e 3º do CDC.</li>
+      <li><strong>Cobrança indevida:</strong> o valor cobrado não deve ser devido, seja porque a dívida não existe, foi paga, está prescrita ou foi cobrada a maior.</li>
+      <li><strong>Efetivo pagamento:</strong> o consumidor deve ter efetivamente pago o valor indevido. Mera cobrança, sem pagamento, não gera direito à devolução em dobro, mas pode gerar dano moral.</li>
+    </ul>
+
+    <h2>E a exceção do "engano justificável"?</h2>
+    <p>A lei prevê que a devolução em dobro não se aplica quando o fornecedor agiu com <strong>engano justificável</strong>. Trata-se de hipótese interpretada de forma muito restritiva pelos tribunais. Erros de sistema, falhas administrativas e atos de terceiros raramente são aceitos como engano justificável pela jurisprudência dominante.</p>
+    <p>O Superior Tribunal de Justiça já consolidou entendimento de que, na relação de consumo, a boa-fé objetiva impõe ao fornecedor um dever de cuidado redobrado, de modo que erros operacionais previsíveis não caracterizam engano justificável.</p>
+    <p>Para que o engano seja considerado justificável, é necessário que o equívoco seja absolutamente imprevisível e inevitável, mesmo com a adoção de todas as cautelas exigíveis de um fornecedor diligente. Na prática, isso exige que a empresa comprove de forma consistente as circunstâncias excepcionais que tornaram o erro impossível de ser evitado, ônus probatório que raramente é cumprido a contento.</p>
+
+    <h2>Posso pedir também dano moral?</h2>
+    <p>Sim. A devolução em dobro e o dano moral são pedidos cumuláveis. Não se excluem. A cobrança indevida, dependendo da situação concreta, pode gerar:</p>
+    <ul>
+      <li>Constrangimento e transtornos comprovados;</li>
+      <li>Inscrição indevida em cadastros de inadimplentes (SPC, Serasa);</li>
+      <li>Bloqueio ou limitação de crédito;</li>
+      <li>Abalo à honra ou imagem do consumidor.</li>
+    </ul>
+    <p>Nesses casos, além da devolução em dobro, o consumidor pode pleitear indenização por danos morais com base nos arts. 186 e 927 do Código Civil.</p>
+
+    <h2>Como agir na prática?</h2>
+    <p>O primeiro passo é reunir a documentação da cobrança indevida: faturas, comprovantes de pagamento, e-mails, protocolos de atendimento. Em seguida, é recomendável buscar orientação jurídica para avaliar o cabimento da ação e o foro adequado. Muitos casos podem ser ajuizados nos Juizados Especiais Cíveis, com gratuidade de custas para valores até 20 salários mínimos.</p>
+    <p>Quanto ao <strong>prazo para agir</strong>, a pretensão à repetição do indébito nas relações de consumo prescreve em 5 anos, nos termos do art. 27 do CDC. O prazo começa a correr a partir do momento em que o consumidor toma ciência da cobrança indevida e do respectivo pagamento. Por isso, guardar comprovantes e registros das faturas é fundamental para garantir o direito à devolução mesmo em cobranças antigas.</p>
+    <p>Vale destacar ainda que o consumidor não precisa aguardar a resolução extrajudicial para ajuizar a ação. Se a empresa se recusar a devolver os valores ou não responder ao contato, o consumidor pode ingressar diretamente com a ação judicial, sem que isso configure qualquer óbice processual.</p>
+
+    <!-- CTA FINAL -->
+    <div class="artigo-cta reveal">
+      <div class="artigo-cta-text">
+        <h3>Você foi cobrado indevidamente?</h3>
+        <p>Avalie seu caso com um especialista. O atendimento é virtual, ágil e comprometido com a defesa efetiva dos seus direitos.</p>
+      </div>
+      <a class="btn-cta-artigo" href="https://wa.me/5583988791232?text=Olá,+li+o+artigo+sobre+cobrança+indevida+e+gostaria+de+uma+consulta." target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Consultar agora
+      </a>
+    </div>
+
+    <p style="margin-top:32px; font-size:12px; color:var(--muted); border-top:1px solid rgba(13,31,53,0.1); padding-top:20px;">
+      <em>Este artigo tem caráter informativo e não constitui consultoria jurídica. Para análise do seu caso concreto, consulte um advogado.</em>
+    </p>
+
+  </article>
+
+  <!-- SIDEBAR -->
+  <aside class="artigo-sidebar reveal from-right">
+
+    <div class="sidebar-card">
+      <h4>Precisa de ajuda?</h4>
+      <p>Atendimento jurídico virtual especializado em Direito do Consumidor e Direito Civil.</p>
+      <a class="btn-sidebar" href="https://wa.me/5583988791232?text=Olá!+Vi+o+site+e+gostaria+de+uma+consulta." target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Falar com Dr. Thiago
+      </a>
+    </div>
+
+    <div class="sidebar-card">
+      <h4>Referências</h4>
+      <div class="refs-list">
+        <a class="ref-item" href="https://www.planalto.gov.br/ccivil_03/leis/l8078compilado.htm" target="_blank" rel="noopener">
+          Lei nº 8.078/1990 (CDC)
+          <span>Art. 42, parágrafo único, repetição do indébito</span>
+          <span class="ref-ext">planalto.gov.br ↗</span>
+        </a>
+        <a class="ref-item" href="https://www.stj.jus.br/repetitivos/temas_repetitivos/pesquisa.jsp?novaConsulta=true&tipo_pesquisa=T&cod_tema_inicial=929&cod_tema_final=929" target="_blank" rel="noopener">
+          STJ, Tema Repetitivo 929
+          <span>Repetição do indébito e engano justificável</span>
+          <span class="ref-ext">stj.jus.br ↗</span>
+        </a>
+        <a class="ref-item" href="https://www.planalto.gov.br/ccivil_03/leis/2002/l10406compilada.htm" target="_blank" rel="noopener">
+          Código Civil, arts. 186 e 927
+          <span>Responsabilidade civil e dano moral</span>
+          <span class="ref-ext">planalto.gov.br ↗</span>
+        </a>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+
+<footer class="reveal">
+  <div class="footer-logo"><span>Thiago Souza</span> Advocacia e Consultoria Jurídica</div>
+  <p>© 2026 · Thiago Souza Advocacia e Consultoria Jurídica. Todos os direitos reservados. OAB/PB 32.907</p>
+  <p style="font-size:11px;color:rgba(255,255,255,0.2);">Este site não constitui serviço oficial de governo. Trabalhamos exclusivamente com serviços jurídicos.</p>
+</footer>
+<a class="wa-float" href="https://wa.me/5583988791232?text=Olá!+Vi+o+site+e+gostaria+de+uma+consulta." target="_blank" title="Fale pelo WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+<script>
+  (function(){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.10 });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  })();
+</script>
+
+<div class="mobile-overlay" id="mobileMenu" role="dialog" aria-label="Menu de navegação">
+  <a href="index.html#servicos" onclick="closeMobileMenu()">Serviços</a>
+  <a href="index.html#sobre" onclick="closeMobileMenu()">Sobre</a>
+  <a href="artigos.html" class="active" onclick="closeMobileMenu()">Artigos</a>
+  <a href="index.html#faq" onclick="closeMobileMenu()">FAQ</a>
+  <div class="mob-divider"></div>
+  <a href="index.html#contato" class="mob-cta" onclick="closeMobileMenu()">Fale Conosco</a>
+</div>
+
+<script>
+  function toggleMobileMenu() {
+    var menu   = document.getElementById('mobileMenu');
+    var burger = document.getElementById('navBurger');
+    var isOpen = menu.classList.contains('active');
+    if (isOpen) {
+      menu.classList.remove('active');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    } else {
+      menu.classList.add('active');
+      burger.classList.add('open');
+      burger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobileMenu').classList.remove('active');
+    document.getElementById('navBurger').classList.remove('open');
+    document.getElementById('navBurger').setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeMobileMenu();
+  });
+</script>
+</body>
+</html>

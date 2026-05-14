@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cláusulas abusivas em contratos: o que você pode contestar?</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #c8a832;
+      --gold-lt: #d9bc55;
+      --dark: #0d1f35;
+      --dark2: #1a2f4a;
+      --cream: #f4f4ff;
+      --cream2: #e8e8f5;
+      --text: #1a2f4a;
+      --muted: #4a6080;
+      --white: #ffffff;
+      --radius: 4px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      line-height: 1.15;
+    }
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(26,22,16,0.96);
+      backdrop-filter: blur(8px);
+      padding: 16px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(233,205,92,0.25);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--white) !important;
+      padding: 8px 20px;
+      border-radius: var(--radius);
+      font-weight: 500 !important;
+    }
+    .nav-cta:hover { background: var(--gold-lt) !important; }
+    footer {
+      background: var(--dark2);
+      border-top: 1px solid rgba(233,205,92,0.2);
+      padding: 24px 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    footer p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+    }
+    footer .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: rgba(255,255,255,0.5);
+    }
+    footer .footer-logo span { color: var(--gold); }
+    .wa-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 200;
+      width: 56px;
+      height: 56px;
+      background: #25d366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .wa-float:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 28px rgba(37,211,102,0.5);
+    }
+    .wa-float svg { width: 30px; height: 30px; fill: white; }
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.7s cubic-bezier(.22,.68,0,1.2), transform 0.7s cubic-bezier(.22,.68,0,1.2);
+    }
+    .reveal.from-right { transform: translateX(44px); }
+    .reveal.visible { opacity: 1; transform: translate(0,0); }
+    .artigo-hero {
+      background: var(--dark);
+      padding: 140px 80px 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .artigo-hero::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -80px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(200,168,50,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .artigo-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .artigo-hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+    .artigo-hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .artigo-hero-cat {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--dark);
+      background: var(--gold);
+      padding: 5px 14px;
+      border-radius: 20px;
+    }
+    .artigo-hero-data {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+    }
+    .artigo-hero h1 {
+      font-size: clamp(28px, 3.5vw, 46px);
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .artigo-hero-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+      max-width: 660px;
+    }
+    .breadcrumb {
+      padding: 16px 80px;
+      background: var(--cream2);
+      border-bottom: 1px solid rgba(13,31,53,0.1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .breadcrumb a {
+      color: var(--gold);
+      text-decoration: none;
+      transition: opacity .2s;
+    }
+    .breadcrumb a:hover { opacity: .75; }
+    .breadcrumb span { opacity: .5; }
+    .artigo-layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 60px;
+      padding: 64px 80px 100px;
+      align-items: start;
+    }
+    .artigo-corpo { max-width: 720px; }
+    .artigo-corpo h2 {
+      font-size: 26px;
+      color: var(--dark);
+      margin: 40px 0 16px;
+    }
+    .artigo-corpo h2:first-child { margin-top: 0; }
+    .artigo-corpo h3 {
+      font-size: 18px;
+      color: var(--dark);
+      margin: 28px 0 12px;
+    }
+    .artigo-corpo p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+    .artigo-corpo strong { color: var(--text); }
+    .artigo-corpo ul, .artigo-corpo ol {
+      padding-left: 24px;
+      margin-bottom: 18px;
+    }
+    .artigo-corpo li {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .artigo-destaque {
+      border-left: 3px solid var(--gold);
+      padding: 18px 24px;
+      background: rgba(200,168,50,0.06);
+      border-radius: 0 4px 4px 0;
+      margin: 28px 0;
+    }
+    .artigo-destaque p {
+      margin: 0;
+      font-style: italic;
+      color: var(--text);
+      font-size: 15px;
+    }
+    .checklist {
+      list-style: none;
+      padding-left: 0 !important;
+      margin-bottom: 18px;
+    }
+    .checklist li {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 10px;
+      padding-left: 28px;
+      position: relative;
+    }
+    .checklist li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: 700;
+    }
+    .artigo-alerta {
+      border: 1px solid rgba(200,168,50,0.4);
+      background: rgba(200,168,50,0.06);
+      border-radius: 6px;
+      padding: 20px 24px;
+      margin: 28px 0;
+    }
+    .artigo-alerta p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--text);
+    }
+    .artigo-alerta strong { color: var(--dark); }
+    .artigo-sidebar {
+      position: sticky;
+      top: 90px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .sidebar-card {
+      background: var(--white);
+      border: 1px solid #d8d8ee;
+      border-radius: 6px;
+      padding: 28px 24px;
+    }
+    .sidebar-card h4 {
+      font-size: 17px;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+    .sidebar-card p {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .btn-sidebar, .btn-cta-artigo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--gold);
+      color: var(--dark);
+      font-family: 'Raleway', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 12px 20px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      width: 100%;
+    }
+    .btn-sidebar:hover, .btn-cta-artigo:hover {
+      background: var(--gold-lt);
+      transform: translateY(-1px);
+    }
+    .btn-sidebar svg, .btn-cta-artigo svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--dark);
+      flex-shrink: 0;
+    }
+    .refs-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .ref-item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding: 10px 12px;
+      border-radius: var(--radius);
+      border: 1px solid transparent;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.4;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .ref-item:hover {
+      background: rgba(200,168,50,0.07);
+      border-color: rgba(200,168,50,0.35);
+    }
+    .ref-item span {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .ref-item .ref-ext {
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+    }
+    .artigos-rel a {
+      display: block;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(13,31,53,0.1);
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.4;
+      transition: color 0.2s;
+    }
+    .artigos-rel a:last-child { border-bottom: none; }
+    .artigos-rel a:hover { color: var(--gold); }
+    .artigos-rel .rel-cat {
+      display: block;
+      font-size: 10px;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .artigo-cta {
+      background: var(--dark2);
+      border-radius: 6px;
+      padding: 40px;
+      margin-top: 48px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      border: 1px solid rgba(200,168,50,0.2);
+    }
+    .artigo-cta-text h3 {
+      color: var(--white);
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+    .artigo-cta-text p {
+      color: rgba(255,255,255,0.55);
+      font-size: 14px;
+      line-height: 1.65;
+      margin: 0;
+    }
+    .btn-cta-artigo {
+      flex-shrink: 0;
+      width: auto;
+      padding: 14px 24px;
+      white-space: nowrap;
+    }
+    @media (max-width: 900px) {
+      nav { padding: 14px 24px; }
+      .nav-links { display: none; }
+      .artigo-hero { padding: 110px 24px 56px; }
+      .breadcrumb { padding: 14px 24px; }
+      .artigo-layout {
+        grid-template-columns: 1fr;
+        padding: 40px 24px 64px;
+        gap: 40px;
+      }
+      .artigo-sidebar { position: static; }
+      .artigo-cta { flex-direction: column; }
+      footer {
+        padding: 20px 24px;
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    /* ── MOBILE MENU ────────────────────────────── */
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px 4px;
+      z-index: 110;
+    }
+    .nav-burger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10,18,28,0.97);
+      z-index: 105;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      backdrop-filter: blur(12px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .mobile-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .mobile-overlay a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 22px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      padding: 14px 40px;
+      border-radius: var(--radius);
+      transition: color 0.2s, background 0.2s;
+      width: 260px;
+      text-align: center;
+    }
+    .mobile-overlay a:hover,
+    .mobile-overlay a.active { color: var(--gold); }
+    .mobile-overlay .mob-divider {
+      width: 40px; height: 1px;
+      background: rgba(200,168,50,0.25);
+      margin: 8px 0;
+    }
+    .mobile-overlay .mob-cta {
+      margin-top: 8px;
+      background: var(--gold);
+      color: var(--dark) !important;
+      font-family: 'Raleway', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+    .mobile-overlay .mob-cta:hover { background: var(--gold-lt); color: var(--dark) !important; }
+
+    @media (max-width: 900px) {
+      .nav-burger { display: flex; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="index.html"><span>Thiago Souza</span> Advocacia e Consultoria Jurídica</a>
+    <ul class="nav-links">
+      <li><a href="index.html#servicos">Serviços</a></li>
+      <li><a href="index.html#sobre">Sobre</a></li>
+      <li><a href="artigos.html" class="active">Artigos</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="index.html#contato" class="nav-cta">Fale Conosco</a></li>
+    </ul>
+  </nav>
+
+  <section class="artigo-hero">
+    <div class="artigo-hero-inner">
+      <div class="artigo-hero-meta">
+        <span class="artigo-hero-cat">Direito Civil</span>
+        <span class="artigo-hero-data">15 de abril de 2026</span>
+      </div>
+      <h1>Cláusulas abusivas em contratos: o que você pode contestar?</h1>
+      <p class="artigo-hero-sub">Nem toda cláusula escrita no contrato é válida. O consumidor e, em muitos casos, também o contratante em relações civis podem questionar disposições que imponham desvantagem exagerada, limitem direitos essenciais ou contrariem a boa-fé objetiva.</p>
+    </div>
+  </section>
+
+  <div class="breadcrumb">
+    <a href="index.html">Início</a>
+    <span>›</span>
+    <a href="artigos.html" class="active">Artigos</a>
+    <span>›</span>
+    <span>Cláusulas abusivas em contratos</span>
+  </div>
+
+  <div class="artigo-layout">
+    <article class="artigo-corpo">
+      <h2>O que são cláusulas abusivas?</h2>
+      <p>Cláusulas abusivas são disposições contratuais que colocam uma das partes em desvantagem excessiva, restringem direitos básicos ou rompem o equilíbrio mínimo que deve existir em qualquer contrato. Nas relações de consumo, o art. 51 do Código de Defesa do Consumidor declara nulas de pleno direito várias dessas cláusulas.</p>
+      <p>No Direito Civil, embora a lógica seja um pouco diferente, o controle judicial também existe. A autonomia da vontade não autoriza o abuso. A função social do contrato, a boa-fé objetiva e a vedação ao enriquecimento sem causa funcionam como limites importantes à liberdade contratual.</p>
+
+      <div class="artigo-destaque">
+        <p>O art. 51, inciso IV, do Código de Defesa do Consumidor considera nulas as cláusulas que “estabeleçam obrigações iníquas, abusivas, que coloquem o consumidor em desvantagem exagerada, ou sejam incompatíveis com a boa-fé ou a equidade”.</p>
+      </div>
+
+      <h2>Em que tipos de contrato isso acontece?</h2>
+      <p>O problema aparece com frequência em contratos bancários, planos de saúde, telefonia, mensalidades escolares, compra e venda, locação, prestação de serviços, academias, cursos, plataformas digitais e negociações particulares. Em contratos de adesão, o risco é ainda maior, porque uma das partes simplesmente aceita condições previamente impostas, sem real possibilidade de discussão.</p>
+      <p>Por isso, a análise do contrato sempre deve considerar o contexto concreto. Nem toda cláusula desfavorável é abusiva, mas toda cláusula que viola o equilíbrio contratual merece exame cuidadoso.</p>
+
+      <h2>Exemplos comuns de cláusulas abusivas</h2>
+      <p>Embora cada caso dependa da redação contratual e da situação prática, algumas hipóteses aparecem repetidamente:</p>
+      <ul class="checklist">
+        <li><strong>Multa excessiva</strong> para rescisão antecipada, sem proporcionalidade com o tempo restante do contrato.</li>
+        <li><strong>Renúncia antecipada de direitos</strong>, como tentativa de impedir reembolso, revisão judicial ou indenização.</li>
+        <li><strong>Alteração unilateral do contrato</strong> por apenas uma das partes, sem critério objetivo e sem possibilidade de contestação.</li>
+        <li><strong>Transferência indevida de responsabilidade</strong> ao consumidor por falhas do fornecedor ou de terceiros da cadeia de fornecimento.</li>
+        <li><strong>Perda integral de valores pagos</strong> quando há cancelamento, mesmo sem justificativa compatível.</li>
+        <li><strong>Limitação indevida de responsabilidade</strong> em casos de dano material, moral ou descumprimento contratual relevante.</li>
+        <li><strong>Cláusula obscura ou contraditória</strong>, redigida de modo a dificultar a compreensão do contratante.</li>
+      </ul>
+
+      <h2>O que diz o art. 51 do CDC?</h2>
+      <p>O art. 51 do Código de Defesa do Consumidor traz um rol de cláusulas nulas de pleno direito, especialmente aquelas que impossibilitam, exoneram ou atenuam a responsabilidade do fornecedor, subtraem opção de reembolso, estabelecem obrigações iníquas ou coloquem o consumidor em desvantagem exagerada.</p>
+      <p>Esse rol não é fechado. Isso significa que o juiz pode reconhecer a abusividade mesmo em situações não descritas literalmente no artigo, desde que a cláusula viole a boa-fé, a equidade e o equilíbrio contratual.</p>
+
+      <div class="artigo-alerta">
+        <p><strong>Atenção:</strong> cláusula abusiva é, em regra, nula de pleno direito. Na prática, isso significa que ela pode ser afastada sem que todo o contrato necessariamente desapareça, desde que o restante do ajuste possa subsistir de forma autônoma.</p>
+      </div>
+
+      <h2>E nos contratos civis entre particulares?</h2>
+      <p>Mesmo fora do CDC, o contrato não é intocável. O Código Civil adota princípios que permitem revisão ou invalidação de cláusulas abusivas, especialmente quando houver violação da boa-fé objetiva, onerosidade excessiva, lesão, abuso de direito ou desequilíbrio incompatível com a função social do contrato.</p>
+      <p>Isso ocorre, por exemplo, em contratos particulares de compra e venda, promessa de pagamento, prestação de serviços ou cessão de direitos. O exame costuma ser mais técnico do que nas relações de consumo, mas o controle judicial continua plenamente possível.</p>
+
+      <h3>Quando a Justiça tende a intervir</h3>
+      <p>A intervenção judicial é mais provável quando a cláusula:</p>
+      <ul>
+        <li>contraria regra legal expressa;</li>
+        <li>impõe obrigação desproporcional a apenas uma parte;</li>
+        <li>gera vantagem manifestamente excessiva ao outro contratante;</li>
+        <li>foi inserida sem transparência ou com redação confusa;</li>
+        <li>frustra a própria finalidade econômica do contrato.</li>
+      </ul>
+
+      <h2>Um exemplo prático</h2>
+      <p>Imagine que um consumidor contrate um curso de duração anual e, após dois meses, precise cancelar por motivos pessoais. O contrato prevê multa equivalente a 100% de todas as mensalidades restantes, além da perda integral da taxa de matrícula e de materiais que sequer foram entregues.</p>
+      <p>Nesse cenário, a cláusula pode ser contestada judicialmente. A jurisprudência costuma admitir retenção razoável para cobrir custos administrativos e eventuais despesas comprovadas, mas rejeita penalidades manifestamente desproporcionais ou enriquecimento sem causa da empresa.</p>
+
+      <h2>Quais direitos o contratante pode pedir?</h2>
+      <p>Dependendo do caso, a pessoa prejudicada pode buscar mais de uma providência ao mesmo tempo:</p>
+      <ul>
+        <li><strong>Declaração de nulidade</strong> da cláusula abusiva.</li>
+        <li><strong>Revisão do contrato</strong> para restabelecer o equilíbrio da relação.</li>
+        <li><strong>Restituição de valores</strong> pagos indevidamente.</li>
+        <li><strong>Obrigação de fazer ou não fazer</strong>, como cessar cobrança, retirar restrição ou cumprir o serviço contratado.</li>
+        <li><strong>Indenização por danos morais e materiais</strong>, quando houver prejuízo efetivo, constrangimento, negativação indevida ou outras consequências relevantes.</li>
+      </ul>
+
+      <h2>O que guardar para provar o abuso?</h2>
+      <p>A prova documental é decisiva. Quanto mais completo for o conjunto de documentos, mais segura tende a ser a análise jurídica do caso.</p>
+      <ul class="checklist">
+        <li><strong>Contrato completo</strong>, inclusive anexos, aditivos e termos de aceite.</li>
+        <li><strong>Comprovantes de pagamento</strong> e boletos cobrados.</li>
+        <li><strong>Conversas, e-mails e protocolos</strong> com a empresa ou com a outra parte contratante.</li>
+        <li><strong>Publicidade da oferta</strong>, quando houver divergência entre o que foi prometido e o que foi contratado.</li>
+        <li><strong>Comprovantes do prejuízo</strong>, como negativação, recusas, extratos ou gastos adicionais.</li>
+      </ul>
+
+      <h2>Como agir na prática?</h2>
+      <p>O primeiro passo é fazer uma leitura técnica do contrato e identificar exatamente qual cláusula está causando o desequilíbrio. Depois disso, é importante reunir documentos e avaliar se o caso comporta solução extrajudicial, pedido administrativo ou ação judicial.</p>
+      <p>Em muitos casos, a simples notificação formal já abre espaço para renegociação. Quando isso não ocorre, pode ser cabível ação de revisão contratual, declaração de nulidade de cláusula, repetição de valores pagos e eventual indenização, conforme a natureza do prejuízo sofrido.</p>
+      <p>Também é importante não demorar para agir. Dependendo do tipo de contrato e do pedido formulado, o prazo prescricional pode variar, o que torna a análise individual indispensável.</p>
+
+      <div class="artigo-cta reveal">
+        <div class="artigo-cta-text">
+          <h3>Há uma cláusula injusta no seu contrato?</h3>
+          <p>Nem toda exigência contratual é válida. Uma análise técnica pode indicar se a cláusula é abusiva, se cabe revisão judicial e quais valores podem ser recuperados.</p>
+        </div>
+        <a class="btn-cta-artigo" href="https://wa.me/5583988791232?text=Olá, li o artigo sobre cláusulas abusivas em contratos e gostaria de uma consulta." target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+          Consultar agora
+        </a>
+      </div>
+
+      <p style="margin-top:32px; font-size:12px; color:var(--muted); border-top:1px solid rgba(13,31,53,0.1); padding-top:20px;"><em>Este artigo tem caráter informativo e não constitui consultoria jurídica. As informações foram estruturadas com base no art. 51 da Lei nº 8.078/1990, nos arts. 421, 422, 157 e 187 do Código Civil, além da jurisprudência consolidada sobre boa-fé objetiva, revisão contratual e nulidade de cláusulas abusivas. Para análise do seu caso concreto, consulte um advogado.</em></p>
+    </article>
+
+    <aside class="artigo-sidebar reveal from-right">
+      <div class="sidebar-card">
+        <h4>Precisa de ajuda?</h4>
+        <p>Atendimento jurídico virtual especializado em Direito Civil, Direito do Consumidor e revisão de contratos.</p>
+        <a class="btn-sidebar" href="https://wa.me/5583988791232?text=Olá! Vi o site e gostaria de uma consulta." target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+          Falar com Dr. Thiago
+        </a>
+      </div>
+
+      <div class="sidebar-card">
+        <h4>Referências</h4>
+        <div class="refs-list">
+          <a class="ref-item" href="https://www.planalto.gov.br/ccivil_03/leis/l8078compilado.htm" target="_blank" rel="noopener">
+            Lei nº 8.078/1990, CDC
+            <span>Art. 51, nulidade de cláusulas abusivas</span>
+            <span class="ref-ext">planalto.gov.br ↗</span>
+          </a>
+          <a class="ref-item" href="https://www.planalto.gov.br/ccivil_03/leis/2002/l10406compilada.htm" target="_blank" rel="noopener">
+            Código Civil
+            <span>Arts. 421, 422, 157 e 187</span>
+            <span class="ref-ext">planalto.gov.br ↗</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <h4>Artigos Relacionados</h4>
+        <div class="artigos-rel">
+          <a href="artigo-1.html"><span class="rel-cat">Direito do Consumidor</span>Cobrança indevida: quando o consumidor tem direito à devolução em dobro?</a>
+          <a href="artigo-2.html"><span class="rel-cat">Direito da Saúde</span>Medicamentos não incorporados ao SUS: você tem direito?</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="reveal">
+    <div class="footer-logo"><span>Thiago Souza</span> Advocacia e Consultoria Jurídica</div>
+    <p>© 2026 · Thiago Souza Advocacia e Consultoria Jurídica. Todos os direitos reservados. OAB/PB 32.907</p>
+    <p style="font-size:11px;color:rgba(255,255,255,0.2)">Este site não constitui serviço oficial de governo. Trabalhamos exclusivamente com serviços jurídicos.</p>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/5583988791232?text=Olá! Vi o site e gostaria de uma consulta." target="_blank" title="Fale pelo WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+  </a>
+
+  <script>
+    const io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.10 });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  </script>
+
+<div class="mobile-overlay" id="mobileMenu" role="dialog" aria-label="Menu de navegação">
+  <a href="index.html#servicos" onclick="closeMobileMenu()">Serviços</a>
+  <a href="index.html#sobre" onclick="closeMobileMenu()">Sobre</a>
+  <a href="artigos.html" class="active" onclick="closeMobileMenu()">Artigos</a>
+  <a href="index.html#faq" onclick="closeMobileMenu()">FAQ</a>
+  <div class="mob-divider"></div>
+  <a href="index.html#contato" class="mob-cta" onclick="closeMobileMenu()">Fale Conosco</a>
+</div>
+
+<script>
+  function toggleMobileMenu() {
+    var menu   = document.getElementById('mobileMenu');
+    var burger = document.getElementById('navBurger');
+    var isOpen = menu.classList.contains('active');
+    if (isOpen) {
+      menu.classList.remove('active');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    } else {
+      menu.classList.add('active');
+      burger.classList.add('open');
+      burger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobileMenu').classList.remove('active');
+    document.getElementById('navBurger').classList.remove('open');
+    document.getElementById('navBurger').setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeMobileMenu();
+  });
+</script>
+</body>
+</html>

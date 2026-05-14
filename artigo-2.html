@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Medicamentos não incorporados ao SUS: você tem direito? O que mudou com o Tema 1234 do STF</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:    #c8a832;
+      --gold-lt: #d9bc55;
+      --dark:    #0d1f35;
+      --dark2:   #1a2f4a;
+      --cream:   #f4f4ff;
+      --cream2:  #e8e8f5;
+      --text:    #1a2f4a;
+      --muted:   #4a6080;
+      --white:   #ffffff;
+      --radius:  4px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Raleway', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
+
+    .section-label {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+    }
+    .divider { width: 48px; height: 2px; background: var(--gold); margin: 16px 0 24px; }
+
+    /* NAVBAR */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(26,22,16,0.96); backdrop-filter: blur(8px);
+      padding: 16px 40px; display: flex; align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(233,205,92,0.25);
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; color: var(--white); letter-spacing: 0.04em; text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    .nav-cta { background: var(--gold); color: var(--white) !important; padding: 8px 20px; border-radius: var(--radius); font-weight: 500 !important; }
+    .nav-cta:hover { background: var(--gold-lt) !important; }
+
+    /* FOOTER */
+    footer { background: var(--dark2); border-top: 1px solid rgba(233,205,92,0.2); padding: 24px 80px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    footer p { font-size: 12px; color: rgba(255,255,255,0.35); }
+    footer .footer-logo { font-family: 'Playfair Display', serif; font-size: 16px; color: rgba(255,255,255,0.5); }
+    footer .footer-logo span { color: var(--gold); }
+
+    /* WA FLOAT */
+    .wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 200; width: 56px; height: 56px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4); text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+    .wa-float:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
+    .wa-float svg { width: 30px; height: 30px; fill: white; }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.7s cubic-bezier(.22,.68,0,1.2), transform 0.7s cubic-bezier(.22,.68,0,1.2); }
+    .reveal.from-left  { transform: translateX(-44px); }
+    .reveal.from-right { transform: translateX(44px); }
+    .reveal.visible    { opacity: 1; transform: translate(0,0); }
+    .reveal[data-delay="1"] { transition-delay: 0.08s; }
+    .reveal[data-delay="2"] { transition-delay: 0.17s; }
+    .reveal[data-delay="3"] { transition-delay: 0.26s; }
+    .reveal[data-delay="4"] { transition-delay: 0.35s; }
+
+    @media (max-width: 900px) {
+      nav { padding: 14px 24px; }
+      .nav-links { display: none; }
+      footer { padding: 20px 24px; flex-direction: column; text-align: center; }
+    }
+
+    /* HERO DO ARTIGO */
+    .artigo-hero {
+      background: var(--dark); padding: 140px 80px 72px;
+      position: relative; overflow: hidden;
+    }
+    .artigo-hero::before {
+      content: ''; position: absolute; top: -60px; right: -80px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(200,168,50,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .artigo-hero::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .artigo-hero-inner { position: relative; z-index: 1; max-width: 800px; }
+    .artigo-hero-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; flex-wrap: wrap; }
+    .artigo-hero-cat {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--dark); background: var(--gold); padding: 5px 14px; border-radius: 20px;
+    }
+    .artigo-hero-data { font-size: 13px; color: rgba(255,255,255,0.45); }
+    .artigo-hero h1 { font-size: clamp(28px, 3.5vw, 46px); color: var(--white); line-height: 1.2; margin-bottom: 20px; }
+    .artigo-hero-sub { font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 660px; }
+
+    /* BREADCRUMB */
+    .breadcrumb { padding: 16px 80px; background: var(--cream2); border-bottom: 1px solid rgba(13,31,53,0.1); display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
+    .breadcrumb a { color: var(--gold); text-decoration: none; transition: opacity .2s; }
+    .breadcrumb a:hover { opacity: .75; }
+    .breadcrumb span { opacity: .5; }
+
+    /* LAYOUT ARTIGO */
+    .artigo-layout {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 320px;
+      gap: 60px; padding: 64px 80px 100px; align-items: start;
+    }
+
+    /* CORPO DO ARTIGO */
+    .artigo-corpo { max-width: 720px; }
+    .artigo-corpo h2 { font-size: 26px; color: var(--dark); margin: 40px 0 16px; }
+    .artigo-corpo h2:first-child { margin-top: 0; }
+    .artigo-corpo h3 { font-size: 18px; color: var(--dark); margin: 28px 0 12px; }
+    .artigo-corpo p { font-size: 15px; line-height: 1.85; color: var(--muted); margin-bottom: 18px; }
+    .artigo-corpo strong { color: var(--text); }
+    .artigo-corpo ul, .artigo-corpo ol { padding-left: 24px; margin-bottom: 18px; }
+    .artigo-corpo li { font-size: 15px; line-height: 1.8; color: var(--muted); margin-bottom: 6px; }
+
+    .artigo-destaque {
+      border-left: 3px solid var(--gold); padding: 18px 24px;
+      background: rgba(200,168,50,0.06); border-radius: 0 4px 4px 0;
+      margin: 28px 0;
+    }
+    .artigo-destaque p { margin: 0; font-style: italic; color: var(--text); font-size: 15px; }
+    .destaque-fonte {
+      display: block; margin-top: 12px;
+      font-size: 11px; color: var(--muted); font-style: normal;
+      letter-spacing: 0.04em; opacity: 0.8;
+    }
+    .destaque-fonte::before { content: 'Fonte: '; font-weight: 600; color: var(--gold); }
+
+    /* TABELA DE COMPETÊNCIA */
+    .tabela-comp {
+      width: 100%; border-collapse: collapse;
+      margin: 28px 0; font-size: 14px;
+    }
+    .tabela-comp thead tr { background: var(--dark2); color: var(--white); }
+    .tabela-comp th { padding: 12px 16px; text-align: left; font-family: 'Playfair Display', serif; font-weight: 600; font-size: 14px; }
+    .tabela-comp td { padding: 12px 16px; border-bottom: 1px solid rgba(13,31,53,0.1); color: var(--muted); vertical-align: top; }
+    .tabela-comp tr:nth-child(even) td { background: rgba(200,168,50,0.04); }
+    .tabela-comp td strong { color: var(--text); }
+
+    /* CHECKLIST */
+    .checklist { list-style: none; padding-left: 0; margin-bottom: 18px; }
+    .checklist li {
+      font-size: 15px; line-height: 1.75; color: var(--muted);
+      margin-bottom: 10px; padding-left: 28px; position: relative;
+    }
+    .checklist li::before {
+      content: '✓'; position: absolute; left: 0;
+      color: var(--gold); font-weight: 700;
+    }
+
+    /* ALERTA */
+    .artigo-alerta {
+      border: 1px solid rgba(200,168,50,0.4);
+      background: rgba(200,168,50,0.06);
+      border-radius: 6px; padding: 20px 24px; margin: 28px 0;
+    }
+    .artigo-alerta p { margin: 0; font-size: 14px; line-height: 1.75; color: var(--text); }
+    .artigo-alerta strong { color: var(--dark); }
+
+    /* SIDEBAR */
+    .artigo-sidebar { position: sticky; top: 90px; display: flex; flex-direction: column; gap: 24px; }
+
+    .sidebar-card {
+      background: var(--white); border: 1px solid #d8d8ee;
+      border-radius: 6px; padding: 28px 24px;
+    }
+    .sidebar-card h4 { font-size: 17px; color: var(--dark); margin-bottom: 12px; }
+    .sidebar-card p { font-size: 14px; line-height: 1.65; color: var(--muted); margin-bottom: 16px; }
+
+    .btn-sidebar {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--gold); color: var(--dark);
+      font-family: 'Raleway', sans-serif; font-size: 13px; font-weight: 700;
+      letter-spacing: 0.06em; padding: 12px 20px; border-radius: var(--radius);
+      text-decoration: none; transition: background 0.2s, transform 0.15s; width: 100%;
+    }
+    .btn-sidebar:hover { background: var(--gold-lt); transform: translateY(-1px); }
+    .btn-sidebar svg { width: 18px; height: 18px; fill: var(--dark); flex-shrink: 0; }
+
+    .refs-list { display: flex; flex-direction: column; gap: 2px; }
+    .ref-item {
+      display: flex; flex-direction: column; gap: 3px;
+      padding: 10px 12px; border-radius: var(--radius);
+      border: 1px solid transparent;
+      text-decoration: none; color: var(--text);
+      font-size: 14px; font-weight: 500; line-height: 1.4;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .ref-item:hover { background: rgba(200,168,50,0.07); border-color: rgba(200,168,50,0.35); }
+    .ref-item span { font-size: 12px; color: var(--muted); font-weight: 400; }
+    .ref-item .ref-ext { font-size: 11px; color: var(--gold); letter-spacing: 0.04em; }
+
+    .artigos-rel a {
+      display: block; padding: 14px 0;
+      border-bottom: 1px solid rgba(13,31,53,0.1);
+      text-decoration: none; color: var(--text);
+      font-size: 14px; line-height: 1.4;
+      transition: color 0.2s;
+    }
+    .artigos-rel a:last-child { border-bottom: none; }
+    .artigos-rel a:hover { color: var(--gold); }
+    .artigos-rel .rel-cat { display: block; font-size: 10px; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+
+    /* CTA FINAL */
+    .artigo-cta {
+      background: var(--dark2); border-radius: 6px; padding: 40px;
+      margin-top: 48px; display: flex; align-items: center; gap: 32px;
+      border: 1px solid rgba(200,168,50,0.2);
+    }
+    .artigo-cta-text h3 { color: var(--white); font-size: 22px; margin-bottom: 8px; }
+    .artigo-cta-text p { color: rgba(255,255,255,0.55); font-size: 14px; line-height: 1.65; margin: 0; }
+    .btn-cta-artigo {
+      flex-shrink: 0; display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold); color: var(--dark);
+      font-family: 'Raleway', sans-serif; font-size: 13px; font-weight: 700;
+      letter-spacing: 0.06em; padding: 14px 24px; border-radius: var(--radius);
+      text-decoration: none; white-space: nowrap; transition: background 0.2s, transform 0.15s;
+    }
+    .btn-cta-artigo:hover { background: var(--gold-lt); transform: translateY(-1px); }
+    .btn-cta-artigo svg { width: 18px; height: 18px; fill: var(--dark); }
+
+    @media (max-width: 900px) {
+      .artigo-hero { padding: 110px 24px 56px; }
+      .breadcrumb { padding: 14px 24px; }
+      .artigo-layout { grid-template-columns: 1fr; padding: 40px 24px 64px; gap: 40px; }
+      .artigo-sidebar { position: static; }
+      .artigo-cta { flex-direction: column; }
+      .tabela-comp { font-size: 13px; }
+      .tabela-comp th, .tabela-comp td { padding: 10px 12px; }
+    }
+
+
+    /* ── MOBILE MENU ────────────────────────────── */
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px 4px;
+      z-index: 110;
+    }
+    .nav-burger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10,18,28,0.97);
+      z-index: 105;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      backdrop-filter: blur(12px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .mobile-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .mobile-overlay a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 22px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      padding: 14px 40px;
+      border-radius: var(--radius);
+      transition: color 0.2s, background 0.2s;
+      width: 260px;
+      text-align: center;
+    }
+    .mobile-overlay a:hover,
+    .mobile-overlay a.active { color: var(--gold); }
+    .mobile-overlay .mob-divider {
+      width: 40px; height: 1px;
+      background: rgba(200,168,50,0.25);
+      margin: 8px 0;
+    }
+    .mobile-overlay .mob-cta {
+      margin-top: 8px;
+      background: var(--gold);
+      color: var(--dark) !important;
+      font-family: 'Raleway', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+    .mobile-overlay .mob-cta:hover { background: var(--gold-lt); color: var(--dark) !important; }
+
+    @media (max-width: 900px) {
+      .nav-burger { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html"><span>Thiago Souza</span> Advocacia e Consultoria Jurídica</a>
+  <ul class="nav-links">
+    <li><a href="index.html#servicos">Serviços</a></li>
+    <li><a href="index.html#sobre">Sobre</a></li>
+    <li><a href="artigos.html" class="active">Artigos</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+    <li><a href="index.html#contato" class="nav-cta">Fale Conosco</a></li>
+  </ul>
+  <button class="nav-burger" id="navBurger" onclick="toggleMobileMenu()" aria-label="Abrir menu de navegação" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- HERO DO ARTIGO -->
+<section class="artigo-hero">
+  <div class="artigo-hero-inner">
+    <div class="artigo-hero-meta">
+      <span class="artigo-hero-cat">Direito da Saúde</span>
+      <span class="artigo-hero-data">28 de abril de 2026</span>
+    </div>
+    <h1>Medicamentos não incorporados ao SUS: você tem direito? O que mudou com o Tema 1234 do STF</h1>
+    <p class="artigo-hero-sub">O STF concluiu, em 2024, o julgamento que redefiniu as regras para obtenção judicial de medicamentos não incorporados ao SUS. Entenda o que mudou, quem pode pedir, onde ajuizar e o que precisa provar.</p>
+  </div>
+</section>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">Início</a>
+  <span>›</span>
+  <a href="artigos.html" class="active">Artigos</a>
+  <span>›</span>
+  <span>Medicamentos não incorporados ao SUS</span>
+</div>
+
+<!-- LAYOUT PRINCIPAL -->
+<div class="artigo-layout">
+
+  <!-- CORPO DO ARTIGO -->
+  <article class="artigo-corpo">
+
+    <h2>O problema que afeta milhões de pacientes</h2>
+    <p>Milhões de brasileiros dependem do Sistema Único de Saúde para ter acesso a tratamentos de saúde. Mas o SUS não fornece todos os medicamentos existentes, apenas aqueles formalmente incorporados às suas listas e protocolos. Quando o médico prescreve um fármaco que não consta dessas listas, o paciente se vê diante de uma escolha cruel: arcar com o custo do bolso ou buscar o Poder Judiciário.</p>
+    <p>Durante anos, os tribunais do país adotaram critérios muito variados para decidir esses casos, gerando insegurança jurídica tanto para os pacientes quanto para os gestores públicos. Em setembro de 2024, o Supremo Tribunal Federal concluiu o julgamento de dois recursos extraordinários que colocaram fim a essa disputa, fixando parâmetros obrigatórios para todos os juízes e tribunais do Brasil.</p>
+
+    <div class="artigo-destaque">
+      <p>Os Temas 6 (RE 566.471) e 1234 (RE 1.366.243) do STF são conexos e devem ser lidos em conjunto: o Tema 6 define os requisitos materiais para a concessão judicial do medicamento; o Tema 1234 define quem deve ser acionado e em que juízo a ação deve tramitar.</p>
+      <span class="destaque-fonte">STF, RE 566.471 (Tema 6) e RE 1.366.243 (Tema 1234) — julgamentos set./out. 2024</span>
+    </div>
+
+    <h2>O que é um medicamento "não incorporado" ao SUS?</h2>
+    <p>Para fins de aplicação dessas regras, considera-se não incorporado o medicamento que se enquadra em ao menos uma das seguintes situações, conforme definido pelo próprio STF no julgamento do Tema 1234:</p>
+    <ul>
+      <li>Não consta em nenhuma das listas do SUS (RENAME, RESME, REMUME, entre outras);</li>
+      <li>Está previsto em Protocolo Clínico e Diretriz Terapêutica (PCDT), mas o pedido é para indicação, dosagem ou faixa etária diferente da contemplada pelo protocolo;</li>
+      <li>É prescrito para uso fora da bula registrada na ANVISA (<em>off label</em>), sem previsão em PCDT, ou sem constar das listas do componente básico;</li>
+      <li>Possui portaria de incorporação, mas ainda não foi pactuado entre os entes federativos na Comissão Intergestores Tripartite (CIT) e, portanto, ainda não está efetivamente disponibilizado.</li>
+    </ul>
+    <p>Importante: medicamentos <strong>sem registro na ANVISA</strong> seguem regras próprias, previstas no Tema 500 do STF, e estão fora do escopo deste artigo.</p>
+
+    <h2>Onde ajuizar a ação? A competência pelo valor do tratamento</h2>
+    <p>Uma das principais inovações do Tema 1234 foi acabar com a regra anterior de solidariedade irrestrita entre União, Estados e Municípios para qualquer medicamento não incorporado. O novo critério de competência é determinado pelo <strong>valor do tratamento anual</strong>, calculado com base no Preço Máximo de Venda do Governo (PMVG) divulgado pela Câmara de Regulação do Mercado de Medicamentos (CMED), sempre na alíquota zero.</p>
+
+    <table class="tabela-comp">
+      <thead>
+        <tr>
+          <th>Valor do tratamento anual</th>
+          <th>Competência</th>
+          <th>Custeio / Ressarcimento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Igual ou superior a 210 salários mínimos</strong></td>
+          <td>Justiça Federal, a União deve figurar no polo passivo</td>
+          <td>União custeia integralmente</td>
+        </tr>
+        <tr>
+          <td><strong>Entre 7 e menos de 210 salários mínimos</strong></td>
+          <td>Justiça Estadual, Estado responde; União não compõe o polo passivo</td>
+          <td>União ressarce 65% do Estado via repasse Fundo a Fundo</td>
+        </tr>
+        <tr>
+          <td><strong>Abaixo de 7 salários mínimos</strong></td>
+          <td>Justiça Estadual, Estado responde; União não compõe o polo passivo</td>
+          <td>Custeio integral do Estado; sem ressarcimento federal</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="artigo-alerta">
+      <p><strong>Atenção:</strong> como regra geral, os Municípios não mais respondem judicialmente por demandas de medicamentos não incorporados, salvo se houver pactuação específica na Comissão Intergestores Bipartite (CIB) do respectivo Estado atribuindo responsabilidade municipal.</p>
+    </div>
+
+    <h3>Como calcular o valor do tratamento</h3>
+    <p>O cálculo deve considerar a quantidade total do medicamento necessária por ano, conforme a prescrição médica, multiplicada pelo menor PMVG (alíquota zero) listado na tabela da CMED para o princípio ativo. Se não houver pedido de marca específica, usa-se o menor preço disponível para aquele princípio ativo. Existindo mais de um medicamento não incorporado no mesmo pedido, os valores devem ser somados para fins de competência.</p>
+    <p>Vale registrar que a alíquota zero é usada <em>apenas para definir competência</em>. Para fins de cumprimento de eventual decisão condenatória, aplica-se a alíquota de ICMS correspondente ao Estado onde ocorre a aquisição.</p>
+
+    <h2>Os requisitos para obter o medicamento na Justiça</h2>
+    <p>O STF deixou claro que a concessão judicial de medicamento não incorporado ao SUS é <strong>excepcional</strong>. A regra geral, fixada no Tema 6, é de que a ausência do medicamento nas listas do SUS impede o fornecimento por decisão judicial. A exceção somente se aplica quando o paciente comprova, de forma cumulativa, um conjunto rigoroso de requisitos.</p>
+
+    <h3>Ônus probatório do autor da ação</h3>
+    <p>É do paciente o ônus de demonstrar todos os requisitos abaixo. Não basta a simples apresentação de um relatório médico, o STF foi enfático ao exigir fundamento em evidências científicas de alto nível:</p>
+
+    <ul class="checklist">
+      <li><strong>Negativa administrativa prévia:</strong> o pedido de fornecimento do medicamento deve ter sido formulado na via administrativa e negado. A judicialização sem tentativa prévia na rede pública não atende a esse requisito.</li>
+      <li><strong>Ilegalidade da não incorporação ou mora da CONITEC:</strong> o paciente deve demonstrar que a CONITEC (Comissão Nacional de Incorporação de Tecnologias no SUS) ou não apreciou o pedido de incorporação no prazo legal, ou o indeferiu por ato ilegal, não bastando discordar do mérito técnico da decisão.</li>
+      <li><strong>Inexistência de substituto terapêutico incorporado:</strong> deve ficar comprovado que não há medicamento equivalente disponível nas listas do SUS que possa substituir, com eficácia comparável, o fármaco pleiteado.</li>
+      <li><strong>Eficácia e segurança baseadas em evidências científicas de alto nível:</strong> a comprovação deve ser feita exclusivamente com base em ensaios clínicos randomizados, revisões sistemáticas ou meta-análises. Estudos observacionais ou opiniões de especialistas, isoladamente, não são suficientes.</li>
+      <li><strong>Laudo médico fundamentado e circunstanciado:</strong> o documento deve descrever detalhadamente o tratamento já realizado pelo paciente, listando cada medicamento utilizado com posologia e tempo de uso, além de justificar a imprescindibilidade clínica do fármaco pedido.</li>
+      <li><strong>Hipossuficiência financeira:</strong> o paciente deve comprovar que não tem condições de arcar com o custo do medicamento por conta própria.</li>
+    </ul>
+
+    <div class="artigo-destaque">
+      <p>O Poder Judiciário, ao apreciar o pedido, deve obrigatoriamente analisar o ato administrativo de não incorporação pela CONITEC. No entanto, essa análise está limitada ao controle de legalidade: o juiz não pode substituir a avaliação técnica do órgão, mas pode verificar se o procedimento foi regular e se os motivos do indeferimento são reais e legítimos.</p>
+      <span class="destaque-fonte">STF, RE 566.471 (Tema 6) — tese fixada no julgamento de set. 2024</span>
+    </div>
+
+    <h2>O que muda para os medicamentos oncológicos</h2>
+    <p>Os medicamentos para tratamento do câncer mereceram atenção especial no Tema 1234. Historicamente, havia uma regra diferenciada de responsabilidade para oncológicos. Com o julgamento do STF e, posteriormente, com a edição da Portaria GM/MS nº 8.477, de 20 de outubro de 2025, essa distinção foi gradualmente harmonizada.</p>
+    <p>Para os medicamentos oncológicos <strong>não incorporados</strong> ao SUS, a competência segue o mesmo critério de valor do tratamento anual aplicável aos demais fármacos, conforme a tabela acima. A diferença permanece apenas no percentual de ressarcimento interfederativo: nas ações ajuizadas até 10 de junho de 2024, a União ressarcia Estados e Municípios em 80% dos valores; para ações posteriores a essa data, o percentual de 80% foi mantido provisoriamente até que a CIT pactuasse nova regra, nos termos do Tema 1234.</p>
+    <p>Para os medicamentos oncológicos <strong>incorporados</strong> ao SUS, a Portaria GM/MS nº 8.477/2025 criou o Componente da Assistência Farmacêutica em Oncologia (AF-Onco), definindo competências por modalidade de aquisição: medicamentos de compra centralizada pelo Ministério da Saúde são de competência da Justiça Federal; os de negociação nacional e aquisição descentralizada são de competência da Justiça Estadual.</p>
+
+    <h2>As Súmulas Vinculantes 60 e 61</h2>
+    <p>Para garantir a aplicação uniforme desses entendimentos por todos os órgãos do Poder Judiciário e da Administração Pública, o STF converteu as teses dos Temas 6 e 1234 em súmulas vinculantes, publicadas no Diário Oficial da União em setembro e outubro de 2024, respectivamente.</p>
+    <p>A <strong>Súmula Vinculante nº 60</strong> determina que os pedidos e a análise administrativa de fármacos na rede pública, a judicialização do caso e seus desdobramentos devem observar os termos dos três acordos interfederativos homologados pelo STF no Tema 1234.</p>
+    <p>A <strong>Súmula Vinculante nº 61</strong> estabelece que a concessão judicial de medicamento registrado na ANVISA, mas não incorporado às listas do SUS, deve observar as teses firmadas no Tema 6 (RE 566.471).</p>
+    <p>O caráter vinculante dessas súmulas significa que qualquer decisão judicial que as contrarie pode ser cassada por Reclamação Constitucional diretamente ao STF.</p>
+
+    <h2>O que fazer na prática</h2>
+    <p>Se você ou um familiar necessita de um medicamento que não está sendo fornecido pelo SUS, o caminho mais seguro envolve as seguintes etapas:</p>
+    <ol>
+      <li><strong>Formalizar o pedido administrativo:</strong> antes de qualquer medida judicial, protocole o pedido junto à Secretaria de Saúde (municipal ou estadual, conforme o medicamento). Guarde o comprovante de protocolo e qualquer resposta recebida.</li>
+      <li><strong>Reunir documentação médica robusta:</strong> o laudo do médico assistente deve ser completo, com histórico do tratamento já realizado, com nomes, doses e tempo de uso de cada medicamento, e justificativa com base em evidências científicas (estudos, protocolos internacionais, ensaios clínicos).</li>
+      <li><strong>Verificar o registro na ANVISA:</strong> confirme que o medicamento tem registro válido na ANVISA. Sem registro, as regras são diferentes e mais restritivas.</li>
+      <li><strong>Calcular o valor do tratamento anual:</strong> esse cálculo é fundamental para saber em qual juízo a ação deve ser proposta e quem deve figurar no polo passivo.</li>
+      <li><strong>Buscar orientação jurídica especializada:</strong> a complexidade do tema, com critérios técnicos, prazos, ônus probatório rigoroso e regras específicas por tipo de medicamento, exige acompanhamento de advogado com experiência em direito da saúde.</li>
+    </ol>
+
+    <div class="artigo-alerta">
+      <p><strong>Tutela de urgência:</strong> em situações de risco à vida ou comprometimento grave da saúde, é possível requerer a concessão do medicamento em caráter liminar (tutela de urgência), demonstrando o perigo de dano irreversível no prazo de um tratamento normal. O cumprimento imediato, no entanto, fica sujeito à análise judicial dos requisitos do Tema 1234.</p>
+    </div>
+
+    <!-- CTA FINAL -->
+    <div class="artigo-cta reveal">
+      <div class="artigo-cta-text">
+        <h3>Seu medicamento foi negado pelo SUS?</h3>
+        <p>Cada caso tem suas especificidades. Avalie sua situação com um advogado especializado antes de ajuizar uma ação, pois os requisitos são rigorosos e a escolha do foro impacta diretamente o resultado.</p>
+      </div>
+      <a class="btn-cta-artigo" href="https://wa.me/5583988791232?text=Olá,+li+o+artigo+sobre+medicamentos+não+incorporados+ao+SUS+e+gostaria+de+uma+consulta." target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Consultar agora
+      </a>
+    </div>
+
+    <p style="margin-top:32px; font-size:12px; color:var(--muted); border-top:1px solid rgba(13,31,53,0.1); padding-top:20px;">
+      <em>Este artigo tem caráter informativo e não constitui consultoria jurídica. As informações são baseadas no julgamento dos Temas 6 e 1234 do STF (RE 566.471 e RE 1.366.243), nas Súmulas Vinculantes nº 60 e 61, e no Guia Prático para os Temas 6 e 1234 do CNJ (2025). Para análise do seu caso concreto, consulte um advogado.</em>
+    </p>
+
+  </article>
+
+  <!-- SIDEBAR -->
+  <aside class="artigo-sidebar reveal from-right">
+
+    <div class="sidebar-card">
+      <h4>Precisa de ajuda?</h4>
+      <p>Atendimento jurídico virtual especializado em Direito da Saúde, Direito do Consumidor e Direito Civil.</p>
+      <a class="btn-sidebar" href="https://wa.me/5583988791232?text=Olá!+Vi+o+site+e+gostaria+de+uma+consulta." target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Falar com Dr. Thiago
+      </a>
+    </div>
+
+    <div class="sidebar-card">
+      <h4>Referências</h4>
+      <div class="refs-list">
+        <a class="ref-item" href="https://portal.stf.jus.br/jurisprudenciaRepercussao/verAndamentoProcesso.asp?incidente=6335939&numeroProcesso=1366243&classeProcesso=RE&numeroTema=1234" target="_blank" rel="noopener">
+          STF, RE 1.366.243
+          <span>Tema 1234, Acórdão publicado em 11/10/2024</span>
+          <span class="ref-ext">portal.stf.jus.br ↗</span>
+        </a>
+        <a class="ref-item" href="https://portal.stf.jus.br/jurisprudenciaRepercussao/verAndamentoProcesso.asp?incidente=2565078&numeroProcesso=566471&classeProcesso=RE&numeroTema=6" target="_blank" rel="noopener">
+          STF, RE 566.471
+          <span>Tema 6, Julgamento concluído em 26/09/2024</span>
+          <span class="ref-ext">portal.stf.jus.br ↗</span>
+        </a>
+        <a class="ref-item" href="https://portal.stf.jus.br/jurisprudencia/sumariosumulas.asp?base=26&sumula=9260" target="_blank" rel="noopener">
+          Súmula Vinculante nº 60
+          <span>DOU set. 2024</span>
+          <span class="ref-ext">portal.stf.jus.br ↗</span>
+        </a>
+        <a class="ref-item" href="https://portal.stf.jus.br/jurisprudencia/sumariosumulas.asp?base=26&sumula=9296" target="_blank" rel="noopener">
+          Súmula Vinculante nº 61
+          <span>DOU out. 2024</span>
+          <span class="ref-ext">portal.stf.jus.br ↗</span>
+        </a>
+        <a class="ref-item" href="https://www.cnj.jus.br/wp-content/uploads/2025/11/guia-pratico-para-os-temas-6-e-1234-versao-final.pdf" target="_blank" rel="noopener">
+          CNJ, Guia Prático Temas 6 e 1234
+          <span>Brasília, 2025</span>
+          <span class="ref-ext">cnj.jus.br ↗</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <h4>Artigos Relacionados</h4>
+      <div class="artigos-rel">
+        <a href="artigo-1.html">
+          <span class="rel-cat">Direito do Consumidor</span>
+          Cobrança indevida: quando o consumidor tem direito à devolução em dobro?
+        </a>
+        <a href="artigo-3.html">
+          <span class="rel-cat">Direito Civil</span>
+          Cláusulas abusivas em contratos: o que você pode contestar?
+        </a>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+
+<footer class="reveal">
+  <div class="footer-logo"><span>Thiago Souza</span> Advocacia e Consultoria Jurídica</div>
+  <p>© 2026 · Thiago Souza Advocacia e Consultoria Jurídica. Todos os direitos reservados. OAB/PB 32.907</p>
+  <p style="font-size:11px;color:rgba(255,255,255,0.2);">Este site não constitui serviço oficial de governo. Trabalhamos exclusivamente com serviços jurídicos.</p>
+</footer>
+<a class="wa-float" href="https://wa.me/5583988791232?text=Olá!+Vi+o+site+e+gostaria+de+uma+consulta." target="_blank" title="Fale pelo WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+<script>
+  (function(){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.10 });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  })();
+</script>
+
+<div class="mobile-overlay" id="mobileMenu" role="dialog" aria-label="Menu de navegação">
+  <a href="index.html#servicos" onclick="closeMobileMenu()">Serviços</a>
+  <a href="index.html#sobre" onclick="closeMobileMenu()">Sobre</a>
+  <a href="artigos.html" class="active" onclick="closeMobileMenu()">Artigos</a>
+  <a href="index.html#faq" onclick="closeMobileMenu()">FAQ</a>
+  <div class="mob-divider"></div>
+  <a href="index.html#contato" class="mob-cta" onclick="closeMobileMenu()">Fale Conosco</a>
+</div>
+
+<script>
+  function toggleMobileMenu() {
+    var menu   = document.getElementById('mobileMenu');
+    var burger = document.getElementById('navBurger');
+    var isOpen = menu.classList.contains('active');
+    if (isOpen) {
+      menu.classList.remove('active');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    } else {
+      menu.classList.add('active');
+      burger.classList.add('open');
+      burger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobileMenu').classList.remove('active');
+    document.getElementById('navBurger').classList.remove('open');
+    document.getElementById('navBurger').setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeMobileMenu();
+  });
+</script>
+</body>
+</html>
