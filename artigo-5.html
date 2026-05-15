@@ -123,6 +123,7 @@
     .artigo-corpo h3 { font-size: 22px; color: var(--dark2); margin: 28px 0 12px; }
     .artigo-corpo p { font-size: 18px; line-height: 1.85; color: var(--muted); margin-bottom: 18px;
       text-align: justify;
+      text-indent: 2em;
     }
     .artigo-corpo strong { color: var(--text); }
     .artigo-corpo ul, .artigo-corpo ol { padding-left: 24px; margin-bottom: 18px; }
@@ -331,6 +332,36 @@
       .artigo-destaque p { font-size: 22px; }
       .sidebar-card p    { font-size: 21px; }
       .artigo-alerta p   { font-size: 21px; }
+    }
+
+    /* ── CORREÇÕES MOBILE: overflow horizontal ── */
+    @media (max-width: 900px) {
+      .reveal.from-left,
+      .reveal.from-right { transform: translateY(36px); }
+
+      .artigo-hero,
+      .breadcrumb,
+      .artigo-layout,
+      .artigo-corpo,
+      .artigo-sidebar,
+      footer { overflow-x: hidden; max-width: 100%; }
+
+      .artigo-hero-inner { max-width: 100%; }
+      .artigo-hero-sub   { max-width: 100%; font-size: 17px; }
+
+      .btn-cta-artigo { white-space: normal; text-align: center; justify-content: center; }
+
+      .artigo-corpo p,
+      .artigo-corpo li,
+      .artigo-destaque p,
+      .artigo-alerta p,
+      .sidebar-card p {
+        overflow-wrap: break-word;
+        word-break: break-word;
+        hyphens: auto;
+      }
+
+      .breadcrumb { flex-wrap: wrap; font-size: 14px; }
     }
   </style>
 </head>

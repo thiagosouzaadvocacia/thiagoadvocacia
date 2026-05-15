@@ -121,6 +121,7 @@
     .artigo-corpo h3 { font-size: 21px; color: var(--dark); margin: 28px 0 12px; }
     .artigo-corpo p { font-size: 18px; line-height: 1.85; color: var(--muted); margin-bottom: 18px;
       text-align: justify;
+      text-indent: 2em;
     }
     .artigo-corpo strong { color: var(--text); }
     .artigo-corpo ul, .artigo-corpo ol { padding-left: 24px; margin-bottom: 18px; }
@@ -328,7 +329,7 @@
     @media (max-width: 900px) {
       .nav-burger { display: flex; }
     }
-  
+
     /* ── ACESSIBILIDADE MOBILE: +2px nas fontes de leitura ── */
     @media (max-width: 900px) {
       .artigo-corpo p    { font-size: 22px; }
@@ -336,6 +337,46 @@
       .artigo-destaque p { font-size: 22px; }
       .sidebar-card p    { font-size: 21px; }
       .artigo-alerta p   { font-size: 21px; }
+    }
+
+    /* ── CORREÇÕES MOBILE: overflow horizontal ── */
+    @media (max-width: 900px) {
+      /* Causa principal: translateX nas animações empurra conteúdo para fora da tela.
+         No mobile, substituímos por translateY para não criar overflow horizontal. */
+      .reveal.from-left,
+      .reveal.from-right { transform: translateY(36px); }
+
+      /* Garante que nenhuma seção principal vaze para fora */
+      .artigo-hero,
+      .breadcrumb,
+      .artigo-layout,
+      .artigo-corpo,
+      .artigo-sidebar,
+      footer { overflow-x: hidden; max-width: 100%; }
+
+      /* Protege o hero interno */
+      .artigo-hero-inner { max-width: 100%; }
+      .artigo-hero-sub   { max-width: 100%; font-size: 17px; }
+
+      /* Botão CTA não pode ter white-space: nowrap no mobile */
+      .btn-cta-artigo { white-space: normal; text-align: center; justify-content: center; }
+
+      /* Tabela: scrollável horizontalmente no mobile */
+      .tabela-comp { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+      /* Palavras longas (termos jurídicos, URLs) não devem vazar */
+      .artigo-corpo p,
+      .artigo-corpo li,
+      .artigo-destaque p,
+      .artigo-alerta p,
+      .sidebar-card p {
+        overflow-wrap: break-word;
+        word-break: break-word;
+        hyphens: auto;
+      }
+
+      /* Breadcrumb: texto longo não deve forçar largura */
+      .breadcrumb { flex-wrap: wrap; font-size: 14px; }
     }
   </style>
 </head>
@@ -406,7 +447,8 @@
     <h2>Onde ajuizar a ação? A competência pelo valor do tratamento</h2>
     <p>Uma das principais inovações do Tema 1234 foi acabar com a regra anterior de solidariedade irrestrita entre União, Estados e Municípios para qualquer medicamento não incorporado. O novo critério de competência é determinado pelo <strong>valor do tratamento anual</strong>, calculado com base no Preço Máximo de Venda do Governo (PMVG) divulgado pela Câmara de Regulação do Mercado de Medicamentos (CMED), sempre na alíquota zero.</p>
 
-    <table class="tabela-comp">
+    <div style="width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:28px 0;">
+    <table class="tabela-comp" style="margin:0;">
       <thead>
         <tr>
           <th>Valor do tratamento anual</th>
@@ -432,6 +474,7 @@
         </tr>
       </tbody>
     </table>
+    </div>
 
     <div class="artigo-alerta">
       <p><strong>Atenção:</strong> como regra geral, os Municípios não mais respondem judicialmente por demandas de medicamentos não incorporados, salvo se houver pactuação específica na Comissão Intergestores Bipartite (CIB) do respectivo Estado atribuindo responsabilidade municipal.</p>
