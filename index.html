@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Thiago Souza Advocacia | Direito do Consumidor, Civil e Servidor Público | João Pessoa</title>
-  <meta name="description" content="Precisa de um advogado com experiência nas áreas de Direito do Consumidor, Civil ou Servidor Público? Atendimento virtual em todo o Brasil com clareza, agilidade e compromisso. Dr. Thiago Souza - OAB/PB 32.907."/>
+  <meta name="description" content="Precisa de um advogado com experiência nas áreas de Direito do Consumidor, Civil ou Servidor Público? Atendimento virtual em todo o Brasil com clareza, agilidade e compromisso. Dr. Thiago Souza."/>
   <meta name="author" content="Thiago Souza"/>
   <meta name="robots" content="index, follow"/>
   <link rel="canonical" href="https://thiagoosouza.adv.br/"/>
@@ -12,14 +12,14 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="Thiago Souza Advocacia e Consultoria Jurídica"/>
-  <meta property="og:description" content="Advogado com experiência em Direito do Consumidor, Direito Civil e Direito do Servidor Público. Atendimento 100% virtual. João Pessoa, PB. OAB/PB 32.907."/>
+  <meta property="og:description" content="Advogado com experiência em Direito do Consumidor, Direito Civil e Direito do Servidor Público. Atendimento 100% virtual. João Pessoa, PB."/>
   <meta property="og:url" content="https://thiagoosouza.adv.br/"/>
   <meta property="og:locale" content="pt_BR"/>
   <meta property="og:site_name" content="Thiago Souza Advocacia e Consultoria Jurídica"/>
   <!-- WhatsApp / Twitter Card -->
   <meta name="twitter:card" content="summary"/>
   <meta name="twitter:title" content="Thiago Souza Advocacia e Consultoria Jurídica"/>
-  <meta name="twitter:description" content="Advogado com experiência em Direito do Consumidor, Direito Civil e Direito do Servidor Público. Atendimento 100% virtual. João Pessoa, PB. OAB/PB 32.907."/>
+  <meta name="twitter:description" content="Advogado com experiência em Direito do Consumidor, Direito Civil e Direito do Servidor Público. Atendimento 100% virtual. João Pessoa, PB."/>
 
   <!-- Schema.org: escritório de advocacia -->
   <script type="application/ld+json">
@@ -34,7 +34,6 @@
       "@type": "Person",
       "name": "Thiago Souza",
       "jobTitle": "Advogado",
-      "identifier": "OAB/PB 32.907"
     },
     "address": {
       "@type": "PostalAddress",
@@ -143,20 +142,13 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       background: rgba(26,22,16,0.96);
       backdrop-filter: blur(8px);
-      padding: 16px 40px;
+      padding: 28px 80px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid rgba(233,205,92,0.25);
     }
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 23px;
-      font-weight: 600;
-      color: var(--white);
-      letter-spacing: 0.04em;
-    }
-    .nav-logo span { color: var(--gold); }
+    .nav-logo { display: flex; align-items: center; }
     .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a {
       color: rgba(255,255,255,0.7);
@@ -167,14 +159,11 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--gold); }
-    .nav-cta {
-      background: var(--gold);
-      color: var(--white) !important;
-      padding: 8px 20px;
-      border-radius: var(--radius);
-      font-weight: 500 !important;
+    .nav-cta { background: none !important; color: rgba(255,255,255,0.7) !important; padding: 0 !important; border-radius: 0 !important; font-weight: inherit !important; }
+    .nav-cta:hover { background: none !important; color: var(--gold) !important; }
+    @media (min-width: 901px) {
+      .nav-links { position: absolute; left: 50%; transform: translateX(-50%); }
     }
-    .nav-cta:hover { background: var(--gold-lt); color: var(--white) !important; }
 
     /* ── HERO ── */
     #hero {
@@ -344,12 +333,12 @@
 
     /* ── SOBRE ── */
     #sobre {
-      padding: 100px 80px;
+      padding: 100px 80px 29px;
       background: var(--dark2);
       display: grid;
       grid-template-columns: minmax(0, 420px) minmax(0, 600px);
       gap: 48px;
-      align-items: center;
+      align-items: start;
       justify-content: center;
     }
     .sobre-foto {
@@ -643,7 +632,7 @@
 
     /* ── ARTIGOS PREVIEW ── */
     #artigos-preview {
-      padding: 100px 80px;
+      padding: 29px 80px 100px;
       background: var(--dark2);
       position: relative;
       overflow: hidden;
@@ -691,7 +680,7 @@
     .ap-card:hover .ap-link { gap: 9px; }
 
     @media (max-width: 900px) {
-      #artigos-preview { padding: 60px 24px; }
+      #artigos-preview { padding: 45px 24px 60px; }
       .artigos-preview-header { flex-direction: column; align-items: flex-start; gap: 16px; }
       .artigos-preview-grid { grid-template-columns: 1fr; }
     }
@@ -700,19 +689,22 @@
 
     @media (max-width: 900px) {
       nav { padding: 14px 24px; }
-      .nav-links { display: none; }
+      .nav-links { display: none; position: static; transform: none; }
       #hero { padding: 0; min-height: 100vh; justify-content: center; align-items: center; }
       #hero .hero-content { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; margin-top: -60px; padding: 0 8px 0 24px; }
       .hero-logo-banner { width: 95%; max-width: 95%; margin: 0 auto; display: block; }
       #servicos, #faq, #contato { padding: 60px 24px; }
-      .contato-inner { grid-template-columns: 1fr; gap: 48px; }
-      .contato-esquerda { order: 2; }
-      .contato-form-wrap { order: 1; }
+      .contato-inner { grid-template-columns: 1fr; gap: 48px; display: flex; flex-direction: column; }
+      .contato-esquerda { order: 1; }
+      .contato-form-wrap { order: 2; }
+      .contato-info { order: 3; }
+      /* quando movido para filho direto do contato-inner no mobile */
+      .contato-inner > .contato-info { margin-top: 0; }
       .form-row { grid-template-columns: 1fr; }
       .servicos-grid { grid-template-columns: 1fr; }
-      #sobre { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
+      #sobre { grid-template-columns: 1fr; padding: 60px 24px 45px; gap: 40px; }
       /* foto original: esconde no mobile (será movida para dentro do conteúdo via JS) */
-      .sobre-foto { max-width: 280px; margin: 0 auto; aspect-ratio: 2/3; order: 2; }
+      .sobre-foto { max-width: 280px; margin: 0 auto; aspect-ratio: 3/4; order: 2; }
       .sobre-content { order: 1; }
       /* Fix: section-label é <p> e herda text-indent — anular aqui */
       .sobre-content .section-label {
@@ -737,7 +729,7 @@
         width: 338px;
         max-width: 92%;
         margin: 24px auto 28px;
-        aspect-ratio: 2/3;
+        aspect-ratio: 3/4;
         border-radius: 4px;
         overflow: hidden;
         display: block !important;
@@ -1113,20 +1105,16 @@ viewBox="1500 5200 18000 10200"
     <!-- NOME DO ADVOGADO -->
     <h2>Thiago Oliveira de Souza</h2>
     <!-- TITULAÇÃO / ESPECIALIDADE -->
-    <p class="sobre-subtitle">Direito Cível e Consumerista, Advogado OAB/PB 32.907</p>
+    <p class="sobre-subtitle">Direito Cível e Consumerista</p>
     <!-- BIO: escreva em 2–3 parágrafos a trajetória e diferenciais -->
     <p>
-      Advogado inscrito na OAB/PB sob o nº 32.907, graduado em Direito pela Universidade Federal da Paraíba, onde concluiu o curso com excelência e foi agraciado com a Láurea Acadêmica, honraria conferida ao discente de melhor desempenho acadêmico da turma. Possui, ainda, pós-graduação pela Escola Superior de Advocacia da Paraíba (ESA-PB), instituição vinculada à OAB/PB.
+      Graduado em Direito pela Universidade Federal da Paraíba, onde concluiu o curso com excelência e foi agraciado com a Láurea Acadêmica, honraria conferida ao discente de melhor desempenho acadêmico da turma. Possui, ainda, pós-graduação pela Escola Superior de Advocacia da Paraíba (ESA-PB), instituição vinculada à OAB/PB.
     </p>
     <p>
       Atua nas áreas de Direito Civil, Direito do Consumidor e Direito do Servidor Público, oferecendo assessoria jurídica personalizada a pessoas físicas que buscam a defesa efetiva de seus direitos. O atendimento é realizado de forma totalmente virtual, com comodidade e segurança para o cliente, independentemente de sua localização.
     </p>
 
 
-    <a class="btn-whatsapp" href="https://wa.me/5583988791232?text=Olá!+Vi+o+site+e+gostaria+de+uma+consulta." target="_blank" rel="noopener noreferrer">
-      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Fale com o especialista
-    </a>
   </div>
 </section>
 
@@ -1257,11 +1245,6 @@ viewBox="1500 5200 18000 10200"
       <p>
         Seus direitos merecem uma defesa séria e comprometida. O atendimento é realizado de forma totalmente virtual, com agilidade, clareza e dedicação integral ao seu caso. Entre em contato agora e dê o primeiro passo.
       </p>
-      <a class="btn-whatsapp" href="https://wa.me/5583988791232?text=Olá!+Vi+o+site+e+gostaria+de+uma+consulta." target="_blank" rel="noopener noreferrer">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Fale direto pelo WhatsApp
-      </a>
-
       <div class="contato-info">
         <div class="contato-item">
           <div class="ci-icon">📱</div>
@@ -1340,12 +1323,8 @@ viewBox="1500 5200 18000 10200"
 </section>
 
 <!-- ══ FOOTER ════════════════════════════════════════════════════════ -->
-<footer class="reveal">
-  <div class="footer-logo"><span>Thiago Souza</span> Advocacia e Consultoria Jurídica</div>
-  <div style="text-align:right">
-    <p>© 2026 · Thiago Souza Advocacia e Consultoria Jurídica. Todos os direitos reservados. OAB/PB 32.907</p>
-    <p style="font-size:14px;color:rgba(255,255,255,0.2);margin-top:4px;">Este site não constitui serviço oficial de governo. Trabalhamos exclusivamente com serviços jurídicos.</p>
-  </div>
+<footer class="reveal" style="justify-content: center;">
+  <p style="font-size: 12px; color: #ffffff;">Este site não coleta, armazena nem processa dados pessoais dos usuários. Portanto, estamos de acordo com a Lei Geral de Proteção de Dados (Lei n.º 13.709/2018).</p>
 </footer>
 
 <!-- ══ BOTÃO FLUTUANTE WHATSAPP ══════════════════════════════════════ -->
@@ -1509,6 +1488,25 @@ viewBox="1500 5200 18000 10200"
 </script>
 
 <script>
+  /* ── CONTATO: move contato-info para depois do formulário no mobile ── */
+  (function () {
+    function moverInfoMobile() {
+      if (window.innerWidth > 900) return;
+      var info = document.querySelector('#contato .contato-info');
+      var inner = document.querySelector('#contato .contato-inner');
+      if (!info || !inner) return;
+      if (info.parentElement === inner) return;
+      inner.appendChild(info);
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', moverInfoMobile);
+    } else {
+      moverInfoMobile();
+    }
+  })();
+</script>
+
+<script>
   /* ── SOBRE: reordena foto entre parágrafos no mobile ── */
   (function () {
     function moverFotoMobile() {
@@ -1550,6 +1548,70 @@ viewBox="1500 5200 18000 10200"
     }, { passive: true });
     btn.addEventListener('click', function () {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  })();
+</script>
+
+<script>
+  // ── Active nav link por seção visível ──────────────────────────
+  (function () {
+    var sectionMap = {
+      'servicos':        'a[href="#servicos"]',
+      'sobre':           'a[href="#sobre"]',
+      'artigos-preview': 'a[href="artigos.html"]',
+      'faq':             'a[href="#faq"]',
+      'contato':         'a[href="#contato"]',
+      'hero':            null
+    };
+
+    var navLinks = document.querySelectorAll('.nav-links a');
+    var sectionIds = Object.keys(sectionMap);
+
+    function setActive(id) {
+      navLinks.forEach(function (a) { a.classList.remove('active'); });
+      var sel = sectionMap[id];
+      if (sel) {
+        var el = document.querySelector('.nav-links ' + sel);
+        if (el) el.classList.add('active');
+      }
+    }
+
+    function getActiveSection() {
+      var navH = document.querySelector('nav') ? document.querySelector('nav').offsetHeight : 70;
+      var trigger = window.scrollY + navH + 40;
+      var active = null;
+
+      sectionIds.forEach(function (id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        if (el.offsetTop <= trigger) active = id;
+      });
+
+      // Se chegou perto do fundo da página, força a última seção com link
+      var distFromBottom = document.body.scrollHeight - window.scrollY - window.innerHeight;
+      if (distFromBottom < 80) active = 'contato';
+
+      return active;
+    }
+
+    function update() {
+      var id = getActiveSection();
+      if (id) setActive(id);
+      else navLinks.forEach(function (a) { a.classList.remove('active'); });
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    update();
+
+    // Resposta imediata ao clicar
+    navLinks.forEach(function (a) {
+      a.addEventListener('click', function () {
+        var href = this.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          setActive(href.replace('#', ''));
+        }
+      });
     });
   })();
 </script>

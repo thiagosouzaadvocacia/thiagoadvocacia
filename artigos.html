@@ -16,7 +16,7 @@
   <meta property="og:url" content="https://thiagoosouza.adv.br/artigos.html"/>
   <meta property="og:locale" content="pt_BR"/>
   <meta property="og:site_name" content="Thiago Souza Advocacia e Consultoria Jurídica"/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -45,27 +45,35 @@
     }
     .divider { width: 48px; height: 2px; background: var(--gold); margin: 16px 0 24px; }
 
-    /* NAVBAR */
+        /* NAVBAR */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       background: rgba(26,22,16,0.96); backdrop-filter: blur(8px);
-      padding: 16px 40px; display: flex; align-items: center;
+      padding: 14px 80px; display: flex; align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid rgba(233,205,92,0.25);
     }
-    .nav-logo { font-family: 'Playfair Display', serif; font-size: 23px; font-weight: 600; color: var(--white); letter-spacing: 0.04em; text-decoration: none; }
-    .nav-logo span { color: var(--gold); }
+    .nav-logo { text-decoration: none; display: flex; align-items: center; gap: 10px; }
+    .nav-logo-symbol { height: 36px; width: auto; flex-shrink: 0; }
+    .nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
+    .nav-logo-name { font-family: 'Cinzel', serif; font-size: 14px; font-weight: 600; color: var(--white); letter-spacing: 0.12em; text-transform: uppercase; }
+    .nav-logo-sub { font-family: 'Raleway', sans-serif; font-size: 8.5px; font-weight: 400; color: var(--gold); letter-spacing: 0.22em; text-transform: lowercase; margin-top: 4px; }
     .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--gold); }
-    .nav-cta { background: var(--gold); color: var(--white) !important; padding: 8px 20px; border-radius: var(--radius); font-weight: 500 !important; }
-    .nav-cta:hover { background: var(--gold-lt) !important; }
+    .nav-cta { background: none !important; color: rgba(255,255,255,0.7) !important; padding: 0 !important; border-radius: 0 !important; font-weight: inherit !important; }
+    .nav-cta:hover { background: none !important; color: var(--gold) !important; }
+    @media (min-width: 901px) {
+      .nav-links { position: absolute; left: 50%; transform: translateX(-50%); }
+    }
 
     /* FOOTER */
     footer { background: var(--dark2); border-top: 1px solid rgba(233,205,92,0.2); padding: 24px 80px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
     footer p { font-size: 13px; color: rgba(255,255,255,0.35); }
-    footer .footer-logo { font-family: 'Playfair Display', serif; font-size: 17px; color: rgba(255,255,255,0.5); }
-    footer .footer-logo span { color: var(--gold); }
+        footer .footer-logo { display: flex; align-items: center; gap: 10px; }
+    footer .footer-logo-symbol { height: 30px; width: auto; flex-shrink: 0; opacity: 0.6; }
+    footer .footer-logo-name { font-family: 'Cinzel', serif; font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0.12em; text-transform: uppercase; line-height: 1; }
+    footer .footer-logo-sub { font-family: 'Raleway', sans-serif; font-size: 8px; font-weight: 400; color: var(--gold); letter-spacing: 0.2em; text-transform: lowercase; opacity: 0.7; margin-top: 4px; }
 
     /* WA FLOAT */
     .wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 200; width: 40px; height: 40px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4); text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
@@ -84,10 +92,13 @@
     .reveal[data-delay="5"] { transition-delay: 0.44s; }
     .reveal[data-delay="6"] { transition-delay: 0.53s; }
 
-    @media (max-width: 900px) {
+        @media (max-width: 900px) {
       nav { padding: 14px 24px; }
       .nav-links { display: none; }
       footer { padding: 20px 24px; flex-direction: column; text-align: center; }
+      .nav-logo-symbol { height: 47px; }
+      .nav-logo-name { font-size: 17.85px; }
+      .nav-logo-sub { font-size: 11px; }
     }
 
 
@@ -327,11 +338,21 @@
 
 
 <nav>
-  <a class="nav-logo" href="index.html"><span>Thiago Souza</span> Advocacia e Consultoria Jurídica</a>
+  <a class="nav-logo" href="index.html">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3550 3450" class="nav-logo-symbol" aria-hidden="true">
+  <path fill="#c8a832" d="M1083.87 374.4l-65.12 520.81 30.83 0 3.43 -34.29c37.71,-270.65 246.73,-452.23 524.22,-452.23l171.31 0 0 1244.89c-195.37,-110.78 -342.65,-247.41 -342.65,-473.15 0,-174.34 89.36,-334.93 227.29,-425.91l0 -65.76c-268.49,87.63 -463.65,305.61 -463.65,597.86 0,352.24 279.19,510.5 579.01,649l0 693.17c0,89.12 -58.24,147.36 -147.32,147.36l-47.97 0 0 30.83 647.55 0 0 -30.83 -47.97 0c-85.66,0 -143.9,-58.24 -143.9,-147.36l0 -1936.89c216.89,54.97 430.07,267.87 513.92,742.07l119.91 -445.42c-190.53,-190.53 -401.88,-308.18 -633.83,-335.81l0 -244.05 171.31 0c274.07,0 486.51,181.58 520.77,452.23l3.42 34.29 30.87 0 -61.7 -520.81 -1589.73 0z"/>
+  <path fill="#c8a832" d="M2145.29 1845.67l0 282.78c187.08,110.39 326.18,250.12 326.18,480.7 0,280.91 -198.76,500.2 -524.23,500.2 -376.87,0 -640.68,-298.1 -722.91,-753.74l-119.91 441.96c232.97,232.97 500.2,342.61 801.72,342.61 462.53,0 801.73,-260.38 801.73,-647.52 0,-344.2 -269.1,-507.79 -562.58,-646.99z"/>
+  <path fill="#c8a832" d="M3473.34 3290.92l-2852.03 0c-157.83,0 -286.25,-128.41 -286.25,-286.24l0 -2852.04 2852 0c157.83,0 286.28,128.45 286.28,286.28l0 2852zm-286.28 -3208.83l-2922.55 0 0 2922.59c0,196.74 160.05,356.79 356.8,356.79l2922.59 0 0 -2922.55c0,-196.74 -160.09,-356.83 -356.84,-356.83z"/>
+</svg>
+    <span class="nav-logo-text">
+      <span class="nav-logo-name">Thiago Souza</span>
+      <span class="nav-logo-sub">advocacia e consultoria jurídica</span>
+    </span>
+  </a>
   <ul class="nav-links">
     <li><a href="index.html#servicos">Serviços</a></li>
     <li><a href="index.html#sobre">Sobre</a></li>
-    <li><a href="artigos.html" class="active">Artigos</a></li>
+    <li><a href="artigos.html">Artigos</a></li>
     <li><a href="index.html#faq">FAQ</a></li>
     <li><a href="index.html#contato" class="nav-cta">Fale Conosco</a></li>
   </ul>
@@ -380,7 +401,7 @@
       <div class="artigo-card-body">
         <div class="artigo-meta">
           <span class="artigo-cat">Direito de Família</span>
-          <span class="artigo-data">14 de maio de 2026</span>
+          <span class="artigo-data">15 de maio de 2026</span>
         </div>
         <h3>Divórcio em cartório: quando é possível, quanto custa e como funciona</h3>
         <p>Muitas pessoas não sabem que o divórcio pode ser concluído em dias, sem processo judicial. Um guia completo sobre os requisitos da EC nº 66/2010 e da Lei nº 11.441/2007, os documentos necessários, os custos envolvidos e o que pode ser resolvido diretamente na escritura pública.</p>
@@ -394,7 +415,7 @@
       <div class="artigo-card-body">
         <div class="artigo-meta">
           <span class="artigo-cat">Direito Civil · Sucessões</span>
-          <span class="artigo-data">13 de maio de 2026</span>
+          <span class="artigo-data">25 de abril de 2026</span>
         </div>
         <h3>Inventário em cartório: quando é possível, quanto custa e o que precisa ser feito</h3>
         <p>Um guia completo para quem está no início: os requisitos da Lei nº 11.441/2007, a diferença prática em relação ao inventário judicial, os documentos exigidos, o cálculo do ITCMD, os emolumentos cartorários e o prazo médio de conclusão.</p>
@@ -408,7 +429,7 @@
       <div class="artigo-card-body">
         <div class="artigo-meta">
           <span class="artigo-cat">Direito Administrativo · Servidor Público</span>
-          <span class="artigo-data">15 de maio de 2026</span>
+          <span class="artigo-data">15 de janeiro de 2026</span>
         </div>
         <h3>Horário Especial para Servidor com Filho com Deficiência: o Direito que o STF Estendeu a Todos</h3>
         <p>A Lei 8.112/1990 garante redução de jornada sem perda salarial ao servidor federal. O STF foi além: por decisão vinculante, o mesmo direito alcança servidores estaduais e municipais, mesmo sem lei local específica.</p>
@@ -422,7 +443,7 @@
       <div class="artigo-card-body">
         <div class="artigo-meta">
           <span class="artigo-cat">Direito da Saúde</span>
-          <span class="artigo-data">28 de abril de 2026</span>
+          <span class="artigo-data">06 de fevereiro de 2026</span>
         </div>
         <h3>Medicamentos não incorporados ao SUS: você tem direito? O que mudou com o Tema 1234 do STF</h3>
         <p>O STF concluiu, em 2024, o julgamento que redefiniu os critérios para obtenção judicial de medicamentos não incorporados ao SUS. Saiba onde ajuizar, quem acionar e o que provar.</p>
@@ -436,7 +457,7 @@
       <div class="artigo-card-body">
         <div class="artigo-meta">
           <span class="artigo-cat">Direito Civil</span>
-          <span class="artigo-data">15 de abril de 2026</span>
+          <span class="artigo-data">20 de março de 2026</span>
         </div>
         <h3>Cláusulas abusivas em contratos: o que você pode contestar?</h3>
         <p>O art. 51 do CDC lista cláusulas nulas de pleno direito. Mas o Código Civil também protege o contratante em casos de lesão e vantagem exagerada. Saiba como identificar e agir.</p>
@@ -448,10 +469,8 @@
 </section>
 
 
-<footer class="reveal">
-  <div class="footer-logo"><span>Thiago Souza</span> Advocacia e Consultoria Jurídica</div>
-  <p>© 2026, Thiago Souza Advocacia e Consultoria Jurídica. Todos os direitos reservados. OAB/PB 32.907</p>
-  <p style="font-size: 12px;color:rgba(255,255,255,0.2);">Este site não constitui serviço oficial de governo. Trabalhamos exclusivamente com serviços jurídicos.</p>
+<footer class="reveal" style="justify-content: center;">
+  <p style="font-size: 12px; color: #ffffff;">Este site não coleta, armazena nem processa dados pessoais dos usuários. Portanto, estamos de acordo com a Lei Geral de Proteção de Dados (Lei n.º 13.709/2018).</p>
 </footer>
 <a class="wa-float" href="https://wa.me/5583988791232?text=Olá!+Vi+o+site+e+gostaria+de+uma+consulta." target="_blank" rel="noopener noreferrer" title="Fale pelo WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 
@@ -480,7 +499,7 @@
 <div class="mobile-overlay" id="mobileMenu" role="dialog" aria-label="Menu de navegação">
   <a href="index.html#servicos" onclick="closeMobileMenu()">Serviços</a>
   <a href="index.html#sobre" onclick="closeMobileMenu()">Sobre</a>
-  <a href="artigos.html" class="active" onclick="closeMobileMenu()">Artigos</a>
+  <a href="artigos.html"onclick="closeMobileMenu()">Artigos</a>
   <a href="index.html#faq" onclick="closeMobileMenu()">FAQ</a>
   <div class="mob-divider"></div>
   <a href="index.html#contato" class="mob-cta" onclick="closeMobileMenu()">Fale Conosco</a>
@@ -534,5 +553,6 @@
     });
   })();
 </script>
+
 </body>
 </html>
