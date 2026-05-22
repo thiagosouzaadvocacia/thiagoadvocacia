@@ -14,8 +14,15 @@
   <meta property="og:title" content="Artigos Jurídicos | Thiago Souza Advocacia"/>
   <meta property="og:description" content="Artigos jurídicos sobre Direito do Consumidor, Direito Civil, Direito de Família e Direito do Servidor Público. Conteúdo gratuito por Thiago Souza, OAB/PB 32.907."/>
   <meta property="og:url" content="https://thiagoosouza.adv.br/artigos.html"/>
+  <meta property="og:image" content="https://thiagoosouza.adv.br/img/og-image.jpg"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
   <meta property="og:locale" content="pt_BR"/>
   <meta property="og:site_name" content="Thiago Souza Advocacia e Consultoria Jurídica"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Artigos Jurídicos | Thiago Souza Advocacia"/>
+  <meta name="twitter:description" content="Artigos jurídicos sobre Direito do Consumidor, Direito Civil, Direito de Família e Direito do Servidor Público. Conteúdo gratuito por Thiago Souza, OAB/PB 32.907."/>
+  <meta name="twitter:image" content="https://thiagoosouza.adv.br/img/og-image.jpg"/>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
 
@@ -333,6 +340,45 @@
       stroke-linejoin: round;
     }
   </style>
+
+  <!-- Schema.org: página de artigos -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Artigos Jurídicos",
+    "description": "Artigos jurídicos sobre Direito do Consumidor, Direito Civil, Direito de Família e Direito do Servidor Público.",
+    "url": "https://thiagoosouza.adv.br/artigos.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Thiago Souza Advocacia e Consultoria Jurídica",
+      "url": "https://thiagoosouza.adv.br",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://thiagoosouza.adv.br/img/logo.png"
+      }
+    },
+    "hasPart": [
+      {"@type": "Article", "headline": "Horário Especial para Servidor com Filho com Deficiência", "url": "https://thiagoosouza.adv.br/horario-especial-servidor-filho-deficiencia.html"},
+      {"@type": "Article", "headline": "Medicamentos não incorporados ao SUS: Tema 1234 do STF", "url": "https://thiagoosouza.adv.br/medicamentos-nao-incorporados-sus-tema-1234-stf.html"},
+      {"@type": "Article", "headline": "Cláusulas abusivas em contratos: o que você pode contestar?", "url": "https://thiagoosouza.adv.br/clausulas-abusivas-contratos-consumidor.html"},
+      {"@type": "Article", "headline": "Inventário em Cartório: Requisitos, Custo e Como Fazer", "url": "https://thiagoosouza.adv.br/inventario-cartorio-quando-custo-requisitos.html"},
+      {"@type": "Article", "headline": "Divórcio em Cartório: Requisitos, Custo e Como Funciona", "url": "https://thiagoosouza.adv.br/divorcio-cartorio-quando-custo-como-funciona.html"}
+    ]
+  }
+  </script>
+
+  <!-- Schema.org: breadcrumb -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Início", "item": "https://thiagoosouza.adv.br/"},
+      {"@type": "ListItem", "position": 2, "name": "Artigos", "item": "https://thiagoosouza.adv.br/artigos.html"}
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -396,7 +442,7 @@
   <div class="artigos-grid" id="grid-artigos">
 
     <!-- ARTIGO 5 — DESTAQUE (mais recente) -->
-    <a class="artigo-card destaque reveal" href="artigo-5.html" data-cat="familia">
+    <a class="artigo-card destaque reveal" href="divorcio-cartorio-quando-custo-como-funciona.html" data-cat="familia">
       <div class="artigo-card-top"></div>
       <div class="artigo-card-body">
         <div class="artigo-meta">
@@ -410,7 +456,7 @@
     </a>
 
     <!-- ARTIGO 4 -->
-    <a class="artigo-card reveal" href="artigo-4.html" data-cat="civil" data-delay="1">
+    <a class="artigo-card reveal" href="inventario-cartorio-quando-custo-requisitos.html" data-cat="civil" data-delay="1">
       <div class="artigo-card-top"></div>
       <div class="artigo-card-body">
         <div class="artigo-meta">
@@ -424,7 +470,7 @@
     </a>
 
     <!-- ARTIGO 1 -->
-    <a class="artigo-card reveal" href="artigo-1.html" data-cat="servidor" data-delay="2">
+    <a class="artigo-card reveal" href="horario-especial-servidor-filho-deficiencia.html" data-cat="servidor" data-delay="2">
       <div class="artigo-card-top"></div>
       <div class="artigo-card-body">
         <div class="artigo-meta">
@@ -438,7 +484,7 @@
     </a>
 
     <!-- ARTIGO 2 -->
-    <a class="artigo-card reveal" href="artigo-2.html" data-cat="saude" data-delay="3">
+    <a class="artigo-card reveal" href="medicamentos-nao-incorporados-sus-tema-1234-stf.html" data-cat="saude" data-delay="3">
       <div class="artigo-card-top"></div>
       <div class="artigo-card-body">
         <div class="artigo-meta">
@@ -452,7 +498,7 @@
     </a>
 
     <!-- ARTIGO 3 -->
-    <a class="artigo-card reveal" href="artigo-3.html" data-cat="civil" data-delay="4">
+    <a class="artigo-card reveal" href="clausulas-abusivas-contratos-consumidor.html" data-cat="civil" data-delay="4">
       <div class="artigo-card-top"></div>
       <div class="artigo-card-body">
         <div class="artigo-meta">
